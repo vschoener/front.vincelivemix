@@ -6,10 +6,9 @@ jobs:
     docker:
       - image: circleci/node:12.13.0
     steps:
+      - checkout
       - setup_remote_docker:
           docker_layer_caching: false # Plan is disabled
-      - attach_workspace:
-          at: .
       - run: |
           TAG=build-$CIRCLE_BUILD_NUM
           docker build -t sdevilcry/front.vincelivemix:$TAG -f Dockerfile .
