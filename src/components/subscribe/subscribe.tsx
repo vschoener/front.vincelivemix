@@ -13,7 +13,7 @@ function Subscribe() {
                 <div className="col-12">
                   <div className="welcome-text">
                     <h2 data-animation="fadeInUp" data-delay="100ms">Subscribe Today</h2>
-                    <h5 data-animation="fadeInUp" data-delay="300ms">Please schedule a podcast post, to make it visible
+                    <h5 data-animation="fadeInUp" data-delay="300ms">Choose your preferred service to stay updated with the last incoming episode
                       here.</h5>
                     <div className="welcome-btn-group">
                       <a className="btn poca-btn m-2 ml-0 disabled" data-animation="fadeInUp" data-delay="500ms">Subscribe
