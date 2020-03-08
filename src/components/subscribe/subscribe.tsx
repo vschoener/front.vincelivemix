@@ -35,7 +35,7 @@ function Subscribe() {
                           href="#" className="music-duration">00:47:26</a></p>
                       </div>
                       <div className="poca-music-player">
-                        <audio preload="auto" controls>
+                        <audio preload="none" controls>
                           <source src="https://vincelivemix.s3.eu-west-3.amazonaws.com/episodes/Vince+Live+Mix+72+-+Resurrection.mp3" />
                         </audio>
                       </div>
