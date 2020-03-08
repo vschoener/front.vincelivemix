@@ -1,0 +1,27 @@
+version: 2.1
+orbs:
+  node: circleci/node@1.1.6
+jobs:
+  build-and-push:
+    docker:
+      - image: circleci/node:12.13.0
+    steps:
+      - setup_remote_docker:
+          docker_layer_caching: false # Plan is disabled
+      - attach_workspace:
+          at: .
+      - run: |
+          TAG=build-$CIRCLE_BUILD_NUM
+          docker build -t sdevilcry/front.vincelivemix:$TAG -f ./docker/Dockerfile .
+          echo $DOCKER_PASSWORD | docker login -u $DOCKER_LOGIN --password-stdin
+          docker push sdevilcry/front.vincelivemix:$TAG
+workflows:
+  version: 2
+  build-and-publish:
+    jobs:
+      - build-and-push:
+          requires:
+            - test
+          filters:
+            branches:
+              only: master
