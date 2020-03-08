@@ -12,7 +12,7 @@ jobs:
           at: .
       - run: |
           TAG=build-$CIRCLE_BUILD_NUM
-          docker build -t sdevilcry/front.vincelivemix:$TAG -f ./docker/Dockerfile .
+          docker build -t sdevilcry/front.vincelivemix:$TAG -f Dockerfile .
           echo $DOCKER_PASSWORD | docker login -u $DOCKER_LOGIN --password-stdin
           docker push sdevilcry/front.vincelivemix:$TAG
 workflows:
