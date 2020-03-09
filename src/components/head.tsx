@@ -35,7 +35,6 @@ const Head = (props: Props) => (
       property="og:description"
       content={props.description || defaultDescription}
     />
-    <link rel="stylesheet" href="/style.css" />
   </NextHead>
 );
 

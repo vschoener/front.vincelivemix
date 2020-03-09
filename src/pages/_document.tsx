@@ -1,16 +1,12 @@
 import React from 'react';
 import Document, { Head, Main, NextScript, DocumentContext } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
-import getConfig from "next/config";
-
-const { publicRuntimeConfig } = getConfig();
-
-const { google } = publicRuntimeConfig;
+import GoogleTag from "../components/tags/google-tag";
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
-    const sheet = new ServerStyleSheet()
-    const originalRenderPage = ctx.renderPage
+    const sheet = new ServerStyleSheet();
+    const originalRenderPage = ctx.renderPage;
 
     try {
       ctx.renderPage = () =>
@@ -36,28 +32,11 @@ export default class MyDocument extends Document {
   render(): JSX.Element {
     return (
       <html>
-        <Head>
-          {/* Global Site Tag (gtag.js) - Google Analytics */}
-          <script
-            async
-            src={`https://www.googletagmanager.com/gtag/js?id=${google.tag}`}
-          />
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${google.tag}', {
-                page_path: window.location.pathname,
-              });
-            `,
-            }}
-          />
-        </Head>
+        <Head />
         <body>
           <Main />
           <NextScript />
+          <GoogleTag />
         </body>
       </html>
     )
