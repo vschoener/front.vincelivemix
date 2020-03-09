@@ -1,5 +1,15 @@
 module.exports = {
-  env: {
-    GOOGLE_TAG: process.env.GOOGLE_TAG || ''
+  publicRuntimeConfig: {
+    meta: {
+      head: {
+        title: 'Vince live mix',
+        description: 'Feel the vibe of the sound',
+      },
+      siteUrl: 'www.vincelivemix.fr',
+      favicon: ''
+    },
+    google: {
+      tag: process.env.GOOGLE_TAG || ''
+    },
   },
 };

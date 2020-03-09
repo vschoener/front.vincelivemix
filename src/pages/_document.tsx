@@ -1,10 +1,11 @@
 import React from 'react';
 import Document, { Head, Main, NextScript, DocumentContext } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
+import getConfig from "next/config";
 
-import { google } from '../config';
+const { publicRuntimeConfig } = getConfig();
 
-const { tag: GA_TRACKING_ID } = google;
+const { google } = publicRuntimeConfig;
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -39,7 +40,7 @@ export default class MyDocument extends Document {
           {/* Global Site Tag (gtag.js) - Google Analytics */}
           <script
             async
-            src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+            src={`https://www.googletagmanager.com/gtag/js?id=${google.tag}`}
           />
           <script
             dangerouslySetInnerHTML={{
@@ -47,7 +48,7 @@ export default class MyDocument extends Document {
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', '${GA_TRACKING_ID}', {
+              gtag('config', '${google.tag}', {
                 page_path: window.location.pathname,
               });
             `,

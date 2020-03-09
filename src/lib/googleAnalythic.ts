@@ -1,4 +1,8 @@
-import { google } from '../config';
+import getConfig from 'next/config';
+
+const { publicRuntimeConfig } = getConfig();
+
+const { google } = publicRuntimeConfig;
 
 // https://developers.google.com/analytics/devguides/collection/gtagjs/pages
 export const pageview = (url: string) => {
