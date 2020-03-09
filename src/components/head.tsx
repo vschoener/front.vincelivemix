@@ -1,8 +1,10 @@
 import React from 'react'
-import NextHead from 'next/head'
-import { config } from '../config'
+import NextHead from 'next/head';
+import getConfig from 'next/config';
 
-const { meta } = config;
+const { publicRuntimeConfig } = getConfig();
+
+const { meta } = publicRuntimeConfig;
 
 const defaultDescription = meta.head.description;
 const defaultURL = meta.siteUrl;
