@@ -6,5 +6,9 @@ export const config = {
     },
     siteUrl: 'www.vincelivemix.fr',
     favicon: ''
-  }
+  },
+};
+
+export const google = {
+  tag: process.env.GOOGLE_TAG || ''
 };
