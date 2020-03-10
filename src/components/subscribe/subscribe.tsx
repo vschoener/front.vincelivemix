@@ -1,6 +1,10 @@
 import React from "react";
+const { publicRuntimeConfig } = getConfig();
+
+const { host } = publicRuntimeConfig;
 
 import * as S from './subscribe-style';
+import getConfig from "next/config";
 
 function Subscribe() {
   return (
@@ -18,7 +22,7 @@ function Subscribe() {
                     <div className="welcome-btn-group">
                       <a className="btn poca-btn m-2 ml-0 disabled" data-animation="fadeInUp" data-delay="500ms">Subscribe
                         with iTunes</a>
-                      <a href="http://back.vincelivemix.fr/api/rss" target="_blank" className="btn poca-btn btn-2 m-2" data-animation="fadeInUp" data-delay="700ms">Subscribe
+                      <a href={host + '/api/rss'} target="_blank" className="btn poca-btn btn-2 m-2" data-animation="fadeInUp" data-delay="700ms">Subscribe
                         with RSS</a>
                     </div>
                   </div>
