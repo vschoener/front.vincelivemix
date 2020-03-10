@@ -29,7 +29,7 @@ function Subscribe() {
                   <div className="poca-music-area mt-100 d-flex align-items-center flex-wrap" data-animation="fadeInUp"
                        data-delay="900ms">
                     <div className="poca-music-thumbnail">
-                      <img src="https://vincelivemix.s3.eu-west-3.amazonaws.com/images/podcast/vincelivemix-main.jpg" alt="" />
+                      <img src="http://media.vincelivemix.fr/images/podcast/vincelivemix-main.jpg" alt="" />
                     </div>
                     <div className="poca-music-content">
                       <span className="music-published-date">September 29, 2019</span>
@@ -40,7 +40,7 @@ function Subscribe() {
                       </div>
                       <div className="poca-music-player">
                         <audio preload="none" controls>
-                          <source src="https://vincelivemix.s3.eu-west-3.amazonaws.com/episodes/Vince+Live+Mix+72+-+Resurrection.mp3" />
+                          <source src="http://media.vincelivemix.fr/episodes/Vince+Live+Mix+72+-+Resurrection.mp3" />
                         </audio>
                       </div>
                       <div className="likes-share-download d-flex align-items-center justify-content-between">
