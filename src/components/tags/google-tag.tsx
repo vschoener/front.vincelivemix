@@ -1,8 +1,14 @@
 import React from "react";
 import getConfig from "next/config";
 
+import { isProduction } from "../../lib/env";
+
 function GoogleTag() {
   const { publicRuntimeConfig: { google } } = getConfig();
+
+  if (!isProduction()) {
+    return <></>
+  }
 
   return (
     <>
