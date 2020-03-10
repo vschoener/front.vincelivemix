@@ -29,7 +29,7 @@ function Subscribe() {
                   <div className="poca-music-area mt-100 d-flex align-items-center flex-wrap" data-animation="fadeInUp"
                        data-delay="900ms">
                     <div className="poca-music-thumbnail">
-                      <img src="http://media.vincelivemix.fr/images/podcast/vincelivemix-main.jpg" alt="" />
+                      <img src="http://media.vincelivemix.fr/images/episodes/Live+mix+72.jpg" alt="" />
                     </div>
                     <div className="poca-music-content">
                       <span className="music-published-date">September 29, 2019</span>
