@@ -598,19 +598,19 @@ ul {
 .welcome-text {
   position: relative;
   z-index: 1; }
-  .welcome-text h2 {
+  .welcome-text h1 {
     font-size: 72px;
     color: #ffffff;
     display: block;
     text-transform: capitalize; }
     @media only screen and (min-width: 992px) and (max-width: 1199px) {
-      .welcome-text h2 {
+      .welcome-text h1 {
         font-size: 48px; } }
     @media only screen and (min-width: 768px) and (max-width: 991px) {
-      .welcome-text h2 {
+      .welcome-text h1 {
         font-size: 48px; } }
     @media only screen and (max-width: 767px) {
-      .welcome-text h2 {
+      .welcome-text h1 {
         font-size: 36px; } }
   .welcome-text h5 {
     font-size: 18px;

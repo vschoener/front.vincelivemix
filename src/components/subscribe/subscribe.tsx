@@ -16,7 +16,7 @@ function Subscribe() {
               <div className="row h-100 align-items-center">
                 <div className="col-12">
                   <div className="welcome-text">
-                    <h2 data-animation="fadeInUp" data-delay="100ms">Subscribe Today</h2>
+                    <h1 data-animation="fadeInUp" data-delay="100ms">Subscribe Today</h1>
                     <h5 data-animation="fadeInUp" data-delay="300ms">Choose your preferred service to stay updated with the last incoming episode
                       here.</h5>
                     <div className="welcome-btn-group">
@@ -29,7 +29,7 @@ function Subscribe() {
                   <div className="poca-music-area mt-100 d-flex align-items-center flex-wrap" data-animation="fadeInUp"
                        data-delay="900ms">
                     <div className="poca-music-thumbnail">
-                      <img src="http://media.vincelivemix.fr/images/episodes/Live+mix+72.jpg" alt="" />
+                      <img src="http://media.vincelivemix.fr/images/episodes/Live+mix+72.jpg" alt="live-mix-72-cover" />
                     </div>
                     <div className="poca-music-content">
                       <span className="music-published-date">September 29, 2019</span>

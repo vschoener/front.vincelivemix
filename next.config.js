@@ -9,10 +9,13 @@ module.exports = {
     host: process.env.HOST || 'http://localhost:3000',
     meta: {
       head: {
-        title: 'Vince live mix',
-        description: 'Feel the vibe of the sound',
+        title: 'Vince live mix - Feel the vibe of the sound',
+        description: `
+          Passionate about the music, dj and mixing, you will find here a list of episodes mixing various styles
+          from House/Electro. EDM is my favorite one but you could find other style like dubstep, progressive and so on.
+        `,
       },
-      siteUrl: 'www.vincelivemix.fr',
+      frontUrl: 'www.vincelivemix.fr',
       favicon: ''
     },
     google: {

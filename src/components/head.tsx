@@ -2,12 +2,12 @@ import React from 'react'
 import NextHead from 'next/head';
 import getConfig from 'next/config';
 
-const {publicRuntimeConfig} = getConfig();
+const { publicRuntimeConfig } = getConfig();
 
-const {meta} = publicRuntimeConfig;
+const { meta } = publicRuntimeConfig;
 
 const defaultDescription = meta.head.description;
-const defaultURL = meta.siteUrl;
+const defaultURL = meta.frontUrl;
 const defaultTitle = meta.head.title;
 
 type Props = {
