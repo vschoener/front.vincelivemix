@@ -19,6 +19,7 @@ type Props = {
 const Head = (props: Props) => (
   <NextHead>
     <meta charSet="UTF-8"/>
+    <meta lang="en" />
     <title>
       {props.title ? `${props.title} - ${defaultTitle}` : defaultTitle}
     </title>
