@@ -1,4 +1,8 @@
+import { useTranslation } from "react-i18next";
+
 function Footer() {
+    const { t } = useTranslation();
+
     return (
       <>
         <footer className="footer-area section-padding-80-0">
@@ -6,10 +10,9 @@ function Footer() {
             <div className="row">
               <div className="col-12 col-sm-6 col-lg-3">
                 <div className="single-footer-widget mb-80">
-                  <h4 className="widget-title">About Me</h4>
+                  <h4 className="widget-title">{t('footer.about-me.title')}</h4>
                   <p>
-                    I'm Vincent, 33 years old working as a Software Engineer. I started to mix song during middle school and since then I keep
-                    mixing House Electro mix. I Love EDM and some underground music.
+                    {t('footer.about-me.content')}
                   </p>
                   <div className="copywrite-content">
                     {/*<p>&copy;*/}
@@ -40,7 +43,7 @@ function Footer() {
 
               <div className="col-12 col-sm-6 col-lg-3">
                 <div className="single-footer-widget mb-80">
-                  <h4 className="widget-title">Lastest Episodes</h4>
+                  <h4 className="widget-title">{t('footer.latest-episode.title')}</h4>
 
                   <div className="single-latest-episodes">
                     <p className="episodes-date">September 29, 2019</p>
@@ -51,7 +54,7 @@ function Footer() {
 
               <div className="col-12 col-sm-6 col-lg-3">
                 <div className="single-footer-widget mb-80">
-                  <h4 className="widget-title">Follow Me</h4>
+                  <h4 className="widget-title">{t('footer.follow-me.title')}</h4>
                   <div className="footer-social-info">
                     <a href="https://www.facebook.com/pg/vincelivemix" className="facebook" data-toggle="tooltip" data-placement="top" title="Facebook"><i
                       className="fa fa-facebook"></i></a>

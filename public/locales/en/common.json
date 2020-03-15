@@ -1,0 +1,33 @@
+{
+  "title": "Vince Live Mix",
+  "coming-soon": "coming soon",
+
+  "header": {
+    "menu": {
+      "lang": "Language"
+    }
+  },
+
+  "subscribe": {
+    "title": "Subscribe Today",
+    "choose-services": "Choose your preferred service to stay updated with the last incoming episode here.",
+    "sub-with-itunes": "With Itunes",
+    "sub-with-rss": "With RSS",
+    "like": "Like",
+    "share": "Share",
+    "download": "Download"
+  },
+
+  "footer": {
+    "about-me": {
+      "title": "About me",
+      "content": "I'm Vincent, 33 years old working as a Software Engineer. I started to mix song during middle school and since then I keep mixing House Electro mix. I Love EDM and some underground music."
+    },
+    "latest-episode": {
+      "title": "Latest episodes"
+    },
+    "follow-me": {
+      "title": "Follow me"
+    }
+  }
+}

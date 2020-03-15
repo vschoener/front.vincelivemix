@@ -381,7 +381,7 @@ img {
   align-items: center;
 }
 .breakpoint-off .classynav ul li .dropdown {
-  width: 180px;
+  min-width: 100px;
   position: absolute;
   background-color: #ffffff;
   top: 120%;

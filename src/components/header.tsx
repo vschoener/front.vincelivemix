@@ -1,12 +1,16 @@
 import React from 'react'
 
 import Head from './head'
+import {LanguageHeader} from "./language/language-header";
+import {useTranslation} from "react-i18next";
 
 type Props = {
   pageTitle?: string
 };
 
 function Header({ pageTitle }: Props) {
+  const { i18n } = useTranslation();
+
   return (
     <>
       <Head title={pageTitle} />
@@ -41,8 +45,10 @@ function Header({ pageTitle }: Props) {
                 <div className="classynav">
                   <ul id="nav">
                     <li className="current-item"><a href="/">Home</a></li>
-                    {/*<li>*/}
-                    {/*  <a href="#">Pages</a>*/}
+                    <li>
+                      <a href="#">{i18n.t('header.menu.lang')}</a>
+                      <LanguageHeader />
+                    </li>
                     {/*  <ul className="dropdown">*/}
                     {/*    <li><a href="/index.html">- Home</a></li>*/}
                     {/*    <li><a href="/podcast.html">- Podcast</a></li>*/}
