@@ -69,9 +69,9 @@
   // ***********************************
   // :: 5.0 WOW Active Code
   // ***********************************
-  if(poca_window.width() > 767) {
-    new WOW().init();
-  }
+  // if(poca_window.width() > 767) {
+  //   new WOW().init();
+  // }
 
   // ***********************************
   // :: 8.0 ImagesLoaded Active Code
