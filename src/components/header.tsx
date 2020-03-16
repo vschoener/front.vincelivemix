@@ -11,6 +11,8 @@ type Props = {
 function Header({ pageTitle }: Props) {
   const { i18n } = useTranslation();
 
+  const currentLang = i18n.language.toUpperCase();
+
   return (
     <>
       <Head title={pageTitle} />
@@ -46,7 +48,9 @@ function Header({ pageTitle }: Props) {
                   <ul id="nav">
                     <li className="current-item"><a href="/">Home</a></li>
                     <li>
-                      <a href="#">{i18n.t('header.menu.lang')}</a>
+                      <a href="#">
+                        {currentLang} <img src={`img/flags/${currentLang}.svg`} alt="Current flag" width={16} height={16}/>
+                      </a>
                       <LanguageHeader />
                     </li>
                     {/*  <ul className="dropdown">*/}
