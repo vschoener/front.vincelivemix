@@ -1,12 +1,12 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import getConfig from "next/config";
+import * as S from './subscribe-style';
+import { HighLightEpisode } from "../highlight-episode/highlight-episode";
 
 const { publicRuntimeConfig } = getConfig();
 
 const { host } = publicRuntimeConfig;
-
-import * as S from './subscribe-style';
 
 function Subscribe() {
   const { t } = useTranslation();
@@ -35,34 +35,7 @@ function Subscribe() {
                       </a>
                     </div>
                   </div>
-                  <div className="poca-music-area mt-100 d-flex align-items-center flex-wrap" data-animation="fadeInUp"
-                       data-delay="900ms">
-                    <div className="poca-music-thumbnail">
-                      <img src="http://media.vincelivemix.fr/images/episodes/Live+mix+72.jpg" alt="live-mix-72-cover" />
-                    </div>
-                    <div className="poca-music-content">
-                      <span className="music-published-date">September 29, 2019</span>
-                      <h2>Live Mix 72 - Resurrection</h2>
-                      <div className="music-meta-data">
-                        <p>By <a href="#" className="music-author">Vince</a> | <a
-                          href="#" className="music-duration">00:47:26</a></p>
-                      </div>
-                      <div className="poca-music-player">
-                        <audio preload="none" controls controlsList="nodownload">
-                          <source src="http://media.vincelivemix.fr/episodes/Vince+Live+Mix+72+-+Resurrection.mp3" />
-                        </audio>
-                      </div>
-                      <div className="likes-share-download d-flex align-items-center justify-content-between">
-                        <a>
-                          <i className="fa fa-heart" aria-hidden="true"></i> { t('subscribe.like') } ({ t('coming-soon') })
-                        </a>
-                        <div>
-                          <a className="mr-4"><i className="fa fa-share-alt" aria-hidden="true"></i> { t('subscribe.share') } ({ t('coming-soon') })</a>
-                          <a href="http://media.vincelivemix.fr/episodes/Vince+Live+Mix+72+-+Resurrection.mp3" download><i className="fa fa-download" aria-hidden="true"></i> { t('subscribe.download') }</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <HighLightEpisode />
                 </div>
               </div>
             </div>
