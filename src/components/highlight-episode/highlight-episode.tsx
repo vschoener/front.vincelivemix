@@ -2,29 +2,13 @@ import React, {useEffect, useState} from "react";
 import { useTranslation } from "react-i18next";
 import { getHighLightEpisode } from "../../client/services/episode.service";
 import { HighLightEpisodeDto } from "../../server/dto/highlight-episode.dto";
+import {i18n, TFunction} from "i18next";
 
-export function HighLightEpisode() {
+function renderWithEpisode(highlightEpisode: HighLightEpisodeDto, t: TFunction, i18n: i18n) {
   const dateFormat = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-  const { t, i18n } = useTranslation();
-
-  const [highlightEpisode, setHighlightEpisode] = useState<HighLightEpisodeDto>();
-
-  useEffect(() => {
-    const setHighLightEpisode = async () => {
-      const highlightEpisode = await getHighLightEpisode();
-      setHighlightEpisode(highlightEpisode);
-    };
-
-    setHighLightEpisode();
-  }, []);
-
-  if (!highlightEpisode) {
-    return <>{t('loading')}...</>;
-  }
 
   return (
-    <div className="poca-music-area mt-100 d-flex align-items-center flex-wrap" data-animation="fadeInUp"
-         data-delay="900ms">
+    <>
       <div className="poca-music-thumbnail">
         <img src={highlightEpisode?.coverImage} alt="live-mix-72-cover" />
       </div>
@@ -50,6 +34,28 @@ export function HighLightEpisode() {
           </div>
         </div>
       </div>
+    </>
+  );
+}
+
+export function HighLightEpisode() {
+  const { t, i18n } = useTranslation();
+
+  const [highlightEpisode, setHighlightEpisode] = useState<HighLightEpisodeDto>();
+
+  useEffect(() => {
+    const fetchHighLightEpisode = async () => {
+      const highlightEpisode = await getHighLightEpisode();
+      setHighlightEpisode(highlightEpisode);
+    };
+
+    fetchHighLightEpisode();
+  }, []);
+
+  return (
+    <div className="poca-music-area mt-100 d-flex align-items-center flex-wrap" data-animation="fadeInUp"
+         data-delay="900ms">
+      {highlightEpisode ? renderWithEpisode(highlightEpisode, t, i18n) : <>{t('loading')}...</>}
     </div>
   )
 }

@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { FooterColumnEpisode } from "./footer-column-episode.footer";
 
 function Footer() {
     const { t } = useTranslation();
@@ -42,14 +43,7 @@ function Footer() {
               </div>
 
               <div className="col-12 col-sm-6 col-lg-3">
-                <div className="single-footer-widget mb-80">
-                  <h4 className="widget-title">{t('footer.latest-episode.title')}</h4>
-
-                  <div className="single-latest-episodes">
-                    <p className="episodes-date">September 29, 2019</p>
-                    <a href="https://vincelivemix.s3.eu-west-3.amazonaws.com/episodes/Vince+Live+Mix+72+-+Resurrection.mp3" className="episodes-title">Live mix 72 - Resurrection!</a>
-                  </div>
-                </div>
+                <FooterColumnEpisode />
               </div>
 
               <div className="col-12 col-sm-6 col-lg-3">
