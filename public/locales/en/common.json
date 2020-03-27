@@ -2,6 +2,9 @@
   "title": "Vince Live Mix",
   "coming-soon": "coming soon",
   "loading": "Loading",
+  "like": "Like",
+  "share": "Share",
+  "download": "Download",
 
   "header": {
     "menu": {
@@ -9,14 +12,19 @@
     }
   },
 
+  "category": {
+    "music": "Music"
+  },
+
   "subscribe": {
     "title": "Subscribe Today",
     "choose-services": "Choose your preferred service to stay updated with the last incoming episode here.",
     "sub-with-itunes": "With Itunes",
-    "sub-with-rss": "With RSS",
-    "like": "Like",
-    "share": "Share",
-    "download": "Download"
+    "sub-with-rss": "With RSS"
+  },
+
+  "latest-episodes": {
+    "title": "Latest Episodes"
   },
 
   "footer": {

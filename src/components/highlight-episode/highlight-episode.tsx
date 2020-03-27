@@ -26,11 +26,11 @@ function renderWithEpisode(highlightEpisode: HighLightEpisodeDto, t: TFunction, 
         </div>
         <div className="likes-share-download d-flex align-items-center justify-content-between">
           <a>
-            <i className="fa fa-heart" aria-hidden="true"></i> { t('subscribe.like') } ({ t('coming-soon') })
+            <i className="fa fa-heart" aria-hidden="true"></i> { t('like') } ({ t('coming-soon') })
           </a>
           <div>
-            <a className="mr-4"><i className="fa fa-share-alt" aria-hidden="true"></i> { t('subscribe.share') } ({ t('coming-soon') })</a>
-            <a href={highlightEpisode?.audioLink} download><i className="fa fa-download" aria-hidden="true"></i> { t('subscribe.download') }</a>
+            <a className="mr-4"><i className="fa fa-share-alt" aria-hidden="true"></i> { t('share') } ({ t('coming-soon') })</a>
+            <a href={highlightEpisode?.audioLink} download><i className="fa fa-download" aria-hidden="true"></i> { t('download') }</a>
           </div>
         </div>
       </div>
