@@ -4,6 +4,8 @@ import Head from './head'
 import {LanguageHeader} from "./language/language-header";
 import {useTranslation} from "react-i18next";
 
+import * as S from './header.styled';
+
 type Props = {
   pageTitle?: string
 };
@@ -27,9 +29,11 @@ function Header({ pageTitle }: Props) {
         <div className="main-header-area">
           <div className="classy-nav-container breakpoint-off light left">
             <nav className="classy-navbar justify-content-between" id="pocaNav">
-              <a className="nav-brand" href="/">
-                Vince Live Mix
-              </a>
+              <S.LogoWrapper>
+                <a className="nav-brand" href="/">
+                  <S.LogoImage src="/img/logo.jpg" /> <S.LogoText>Vince Live Mix</S.LogoText>
+                </a>
+              </S.LogoWrapper>
               <div className="classy-navbar-toggler">
                 <span className="navbarToggler">
                 </span>
