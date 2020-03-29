@@ -89,7 +89,7 @@ a,
 a:active,
 a:focus,
 a:hover {
-  color: #232323;
+  color: #ffffff;
   text-decoration: none;
   -webkit-transition-duration: 500ms;
   -o-transition-duration: 500ms;
@@ -1509,7 +1509,7 @@ ul {
       font-size: 18px;
       margin-bottom: 8px;
       font-weight: 600;
-      color: #232323;
+      color: #ffffff;
       display: block; }
       @media only screen and (min-width: 992px) and (max-width: 1199px) {
         .single-footer-widget .single-latest-episodes .episodes-title {
