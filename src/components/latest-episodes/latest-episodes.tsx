@@ -4,6 +4,7 @@ import React, {useEffect, useState} from "react";
 import {EpisodesListDto} from "../../server/dto/episodes-list.dto";
 import {getEpisodes} from "../../client/services/episode.service";
 import {i18n, TFunction} from "i18next";
+import {AudioPlayer} from "../audioplayer/audioplayer";
 
 function renderEpisodes(episodes: EpisodesListDto, t: TFunction, i18n: i18n) {
   const dateFormat = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -22,9 +23,7 @@ function renderEpisodes(episodes: EpisodesListDto, t: TFunction, i18n: i18n) {
               <p>By <a href="#" className="music-author">Vince</a> | <a className="music-catagory">{ t('category.music') }</a> | <a className="music-duration">00:02:56</a></p>
             </div>
             <div className="poca-music-player">
-              <audio preload="none" controls controlsList="nodownload">
-                <source src={episode.audioLink} />
-              </audio>
+              <AudioPlayer audioLink={episode?.audioLink} duration={episode?.itunesDuration} durationInSeconds={episode?.durationAudioInSecond} />
             </div>
             <div className="likes-share-download d-flex align-items-center justify-content-between">
               <a ><i className="fa fa-heart" aria-hidden="true"></i> { t('like') } ({ t('coming-soon') })</a>
