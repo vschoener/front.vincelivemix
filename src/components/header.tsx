@@ -48,10 +48,7 @@ function Header({ pageTitle }: Props) {
                   <ul id="nav">
                     <li className="current-item"><a href="/">Home</a></li>
                     <li>
-                      <a href="#">
-                        {currentLang} <img src={`img/flags/${currentLang}.svg`} alt="Current flag" width={16} height={16}/>
-                      </a>
-                      <LanguageHeader />
+                      <LanguageHeader currentLang={currentLang} />
                     </li>
                     {/*  <ul className="dropdown">*/}
                     {/*    <li><a href="/index.html">- Home</a></li>*/}
