@@ -28,10 +28,13 @@ function Subscribe() {
                     </h5>
                     <div className="welcome-btn-group">
                       <a href="https://podcasts.apple.com/fr/podcast/vince-live-mix/id1504590027" target="_blank" className="btn poca-btn m-2 ml-0" data-animation="fadeInUp" data-delay="500ms">
-                        { t('subscribe.sub-with-itunes') }
+                        { t('subscribe.sub-with-itunes') } <img src="/img/podcast-itunes.svg" width="24" />
                       </a>
                       <a href={host + '/api/rss'} target="_blank" className="btn poca-btn m-2 ml-0" data-animation="fadeInUp" data-delay="700ms">
-                        { t('subscribe.sub-with-rss') }
+                        { t('subscribe.sub-with-rss') } <img src="/img/icon-rss.svg" width="24" />
+                      </a>
+                      <a href="https://soundcloud.com/vincelivemix" target="_blank" className="btn poca-btn m-2 ml-0" data-animation="fadeInUp" data-delay="700ms">
+                        { t('subscribe.sub-with-soundcloud') } <img src="/img/soundcloud.svg" width="24" />
                       </a>
                     </div>
                   </div>

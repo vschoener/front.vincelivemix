@@ -20,7 +20,8 @@
     "title": "Subscribe Today",
     "choose-services": "Choose your preferred service to stay updated with the last incoming episode here.",
     "sub-with-itunes": "With Itunes",
-    "sub-with-rss": "With RSS"
+    "sub-with-rss": "With RSS",
+    "sub-with-soundcloud": "With SoundCloud"
   },
 
   "latest-episodes": {
