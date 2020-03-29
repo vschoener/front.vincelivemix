@@ -1,4 +1,5 @@
-import styled, {css} from 'styled-components';
+import styled, {css, keyframes} from 'styled-components';
+import {PreloadState} from "./preload-state.enum";
 
 type PlayPauseWrapperProps = {
   playing: boolean;
@@ -6,6 +7,7 @@ type PlayPauseWrapperProps = {
 
 type PlayPauseButtonProps = {
   playing: boolean;
+  preloadState: PreloadState;
 }
 
 type VolumeProps = {
@@ -15,6 +17,11 @@ type VolumeProps = {
 type BarPlayedProps = {
   percent: number;
 }
+
+const rotateLoader = keyframes`
+  from {transform:rotate(0deg);}
+  to {transform:rotate(360deg);}
+`;
 
 export const Audio = styled.audio`
   display: none;
@@ -58,7 +65,7 @@ export const PlayPauseWrapper = styled.div<PlayPauseWrapperProps>`
  */
 export const PlayPauseButton = styled.a<PlayPauseButtonProps>`
   content: '';
-  ${({ playing }) => !playing && css`
+  ${({ playing, preloadState }) => !playing && [PreloadState.NOT_STARTED, PreloadState.HAS_PRELOADED].includes(preloadState) && css`
     justify-content: center;
     width: 0;
     height: 0;
@@ -67,6 +74,18 @@ export const PlayPauseButton = styled.a<PlayPauseButtonProps>`
     border-bottom: 7px solid transparent;
     margin-left: 3px;
     border-left: 12px solid #ffffff;
+  `}
+
+   ${({ preloadState }) => preloadState === PreloadState.PRELOADING && css`
+    justify-content: center;
+    width: 0;
+    height: 0;
+    border-top: 7px solid transparent;
+    border-right: none;
+    border-bottom: 7px solid transparent;
+    margin-left: 3px;
+    border-left: 12px solid #ffffff;
+    animation: ${rotateLoader} 1.3s infinite;
   `}
 
   ${({ playing }) => playing && css`

@@ -1,5 +1,6 @@
 import React, {useEffect, useRef, useState} from "react";
 import * as S from "./audioplayer-style";
+import {PreloadState} from "./preload-state.enum";
 
 type Props = {
   audioLink: string;
@@ -16,6 +17,7 @@ export function AudioPlayer({ audioLink, duration, durationInSeconds}: Props) {
   const [oldCurrentSpeakerPositionPercent, setOldSpeakerPositionPercent] = useState<number>(100);
   const [currentTime, setCurrentTime] = useState<number>(0);
   const [isMuted, setSpeakerStatus] = useState<boolean>(false);
+  const [isPreloadingSong, setPreloadingStatus] = useState<PreloadState>(PreloadState.NOT_STARTED);
 
   useEffect(() => {
     if (!audioRef.current) {
@@ -26,6 +28,11 @@ export function AudioPlayer({ audioLink, duration, durationInSeconds}: Props) {
     if (audioRef.current) {
       audioRef.current.addEventListener('timeupdate', () => {
         setCurrentTime((audioRef.current?.currentTime || 0) >> 0);
+      });
+
+      audioRef.current.addEventListener('loadeddata', () => {
+        setPreloadingStatus(PreloadState.HAS_PRELOADED);
+        setPlayingState(true);
       });
     }
   }, [audioRef]);
@@ -44,8 +51,15 @@ export function AudioPlayer({ audioLink, duration, durationInSeconds}: Props) {
   }, [currentSpeakerPositionPercent]);
 
   const play = async () => {
+    if (isPreloadingSong === PreloadState.NOT_STARTED) {
+      setPreloadingStatus(PreloadState.PRELOADING);
+    }
+
     await audioState.play();
-    setPlayingState(true);
+
+    if (isPreloadingSong === PreloadState.HAS_PRELOADED) {
+      setPlayingState(true);
+    }
   };
 
   const pause = async () => {
@@ -114,7 +128,7 @@ export function AudioPlayer({ audioLink, duration, durationInSeconds}: Props) {
       {audioState &&
         <S.AudioPlayer>
           <S.PlayPauseWrapper playing={isAudioPlaying()} >
-            <S.PlayPauseButton onClick={changeState} playing={isAudioPlaying()} />
+            <S.PlayPauseButton onClick={changeState} playing={isAudioPlaying()} preloadState={isPreloadingSong}/>
           </S.PlayPauseWrapper>
           <S.Time>{getCurrentTimeFormatted()}</S.Time>
           <S.Bar onClick={jumpToSongPosition}>

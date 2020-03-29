@@ -29,7 +29,6 @@ function Layout({ children}: Props) {
       {/*<script src="/js/jarallax-video.min.js"/>*/}
       {/*<script src="/js/jquery.easing.min.js"/>*/}
       <script src="/js/default-assets/jquery.scrollup.min.js"/>
-      {/*<script src="/js/default-assets/audioplayer.js"/>*/}
       <script src="/js/default-assets/active.js"/>
     </>
   )
