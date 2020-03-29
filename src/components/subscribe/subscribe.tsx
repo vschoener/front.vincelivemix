@@ -27,10 +27,10 @@ function Subscribe() {
                       { t('subscribe.choose-services') }
                     </h5>
                     <div className="welcome-btn-group">
-                      <a className="btn poca-btn m-2 ml-0 disabled" data-animation="fadeInUp" data-delay="500ms">
+                      <a href="https://podcasts.apple.com/fr/podcast/vince-live-mix/id1504590027" target="_blank" className="btn poca-btn m-2 ml-0" data-animation="fadeInUp" data-delay="500ms">
                         { t('subscribe.sub-with-itunes') }
                       </a>
-                      <a href={host + '/api/rss'} target="_blank" className="btn poca-btn btn-2 m-2" data-animation="fadeInUp" data-delay="700ms">
+                      <a href={host + '/api/rss'} target="_blank" className="btn poca-btn m-2 ml-0" data-animation="fadeInUp" data-delay="700ms">
                         { t('subscribe.sub-with-rss') }
                       </a>
                     </div>
