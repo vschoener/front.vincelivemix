@@ -130,11 +130,4 @@
     }
   });
 
-  // ***********************************
-  // :: 12.0 audioPlayer Active Code
-  // ***********************************
-   if ($.fn.audioPlayer) {
-       $('audio').audioPlayer();
-   }
-
 })(jQuery);

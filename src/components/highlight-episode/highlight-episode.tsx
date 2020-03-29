@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { getHighLightEpisode } from "../../client/services/episode.service";
 import { HighLightEpisodeDto } from "../../server/dto/highlight-episode.dto";
 import {i18n, TFunction} from "i18next";
+import {AudioPlayer} from "../audioplayer/audioplayer";
 
 function renderWithEpisode(highlightEpisode: HighLightEpisodeDto, t: TFunction, i18n: i18n) {
   const dateFormat = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -20,9 +21,7 @@ function renderWithEpisode(highlightEpisode: HighLightEpisodeDto, t: TFunction, 
             href="#" className="music-duration">{highlightEpisode?.itunesDuration}</a></p>
         </div>
         <div className="poca-music-player">
-          <audio preload="none" controls controlsList="nodownload">
-            <source src={highlightEpisode?.audioLink} />
-          </audio>
+          <AudioPlayer audioLink={highlightEpisode?.audioLink} duration={highlightEpisode?.itunesDuration} durationInSeconds={highlightEpisode?.durationAudioInSecond} />
         </div>
         <div className="likes-share-download d-flex align-items-center justify-content-between">
           <a>
