@@ -12,7 +12,7 @@ export const LogoImage = styled.img`
 export const LogoText = styled.span`
   margin-left: 10px;
 
-  @media (max-width: 500px) {
+  @media (max-width: 600px) {
     display: none;
   }
 `;
