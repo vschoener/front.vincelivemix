@@ -10,7 +10,7 @@ function renderLastEpisodes(episodes: EpisodesListDto, i18n: i18n) {
   return episodes.map(episode => (
     <div className="single-latest-episodes">
       <p className="episodes-date">{new Date(episode.publishedAt).toLocaleDateString(i18n.language, dateFormat)}</p>
-      <a href="https://vincelivemix.s3.eu-west-3.amazonaws.com/episodes/Vince+Live+Mix+72+-+Resurrection.mp3" className="episodes-title">{episode.title}</a>
+      <a href={episode.audioLink} className="episodes-title">{episode.title}</a>
     </div>
   ));
 }
