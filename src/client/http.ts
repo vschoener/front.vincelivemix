@@ -1,10 +1,10 @@
 import axios from 'axios';
-import getConfig from "next/config";
+import getConfig from 'next/config';
 
-const { publicRuntimeConfig: { host } } = getConfig();
+const {
+  publicRuntimeConfig: { host },
+} = getConfig();
 
 export const request = axios.create({
-  baseURL: process.browser
-    ? window.location.origin
-    : host,
+  baseURL: process.browser ? window.location.origin : host,
 });

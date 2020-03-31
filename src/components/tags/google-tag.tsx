@@ -1,24 +1,24 @@
-import React from "react";
-import getConfig from "next/config";
+/* eslint-disable react/no-danger */
+import React from 'react';
+import getConfig from 'next/config';
 
-import { isProduction } from "../../lib/env";
+import { isProduction } from '../../lib/env';
 
 function GoogleTag() {
-  const { publicRuntimeConfig: { google } } = getConfig();
+  const {
+    publicRuntimeConfig: { google },
+  } = getConfig();
 
   if (!isProduction()) {
-    return <></>
+    return <></>;
   }
 
   return (
     <>
-    <script
-      async
-      src={`https://www.googletagmanager.com/gtag/js?id=${google.tag}`}
-    />
-    <script
-      dangerouslySetInnerHTML={{
-        __html: `
+      <script async src={`https://www.googletagmanager.com/gtag/js?id=${google.tag}`} />
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
@@ -26,10 +26,10 @@ function GoogleTag() {
           page_path: window.location.pathname,
         });
           `,
-      }}
-    />
-  </>
-  )
+        }}
+      />
+    </>
+  );
 }
 
-export default GoogleTag
+export default GoogleTag;

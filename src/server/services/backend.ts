@@ -1,7 +1,9 @@
 import getConfig from 'next/config';
 import axios from 'axios';
 
-const { serverRuntimeConfig: { backend: backendConfig } } = getConfig();
+const {
+  serverRuntimeConfig: { backend: backendConfig },
+} = getConfig();
 
 export const request = axios.create({
   baseURL: backendConfig.url,

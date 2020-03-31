@@ -1,7 +1,7 @@
 import React from 'react';
-import Document, { Head, Main, NextScript, DocumentContext } from 'next/document'
-import { ServerStyleSheet } from 'styled-components'
-import GoogleTag from "../components/tags/google-tag";
+import Document, { Head, Main, NextScript, DocumentContext } from 'next/document';
+import { ServerStyleSheet } from 'styled-components';
+import GoogleTag from '../components/tags/google-tag';
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -11,7 +11,7 @@ export default class MyDocument extends Document {
     try {
       ctx.renderPage = () =>
         originalRenderPage({
-          enhanceApp: App => props => sheet.collectStyles(<App {...props} />),
+          enhanceApp: (App) => (props) => sheet.collectStyles(<App {...props} />),
         });
 
       const initialProps = await Document.getInitialProps(ctx);
@@ -23,15 +23,15 @@ export default class MyDocument extends Document {
             {sheet.getStyleElement()}
           </>
         ),
-      }
+      };
     } finally {
-      sheet.seal()
+      sheet.seal();
     }
   }
 
   render(): JSX.Element {
     return (
-      <html>
+      <html lang="en">
         <Head />
         <body>
           <Main />
@@ -39,6 +39,6 @@ export default class MyDocument extends Document {
           <GoogleTag />
         </body>
       </html>
-    )
+    );
   }
 }

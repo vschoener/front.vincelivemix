@@ -1,22 +1,22 @@
-import styled, {css, keyframes} from 'styled-components';
-import {PreloadState} from "./preload-state.enum";
+import styled, { css, keyframes } from 'styled-components';
+import { PreloadState } from './preload-state.enum';
 
 type PlayPauseWrapperProps = {
   playing: boolean;
-}
+};
 
 type PlayPauseButtonProps = {
   playing: boolean;
   preloadState: PreloadState;
-}
+};
 
 type VolumeProps = {
   size: number;
-}
+};
 
 type BarPlayedProps = {
   percent: number;
-}
+};
 
 const rotateLoader = keyframes`
   from {transform:rotate(0deg);}
@@ -47,16 +47,16 @@ export const PlayPauseWrapper = styled.div<PlayPauseWrapperProps>`
   width: 35px;
   height: 35px;
   transition: all 0 ease-in-out;
-  background-color: ${({ playing }) => playing ? 'transparent' : '#f55656'};
+  background-color: ${({ playing }) => (playing ? 'transparent' : '#f55656')};
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
   cursor: pointer;
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 
   &:hover {
-    background: ${({ playing }) => playing ? 'rgba(235,79,26,.1)' : '#f55656'}
+    background: ${({ playing }) => (playing ? 'rgba(235,79,26,.1)' : '#f55656')};
   }
 `;
 
@@ -65,48 +65,55 @@ export const PlayPauseWrapper = styled.div<PlayPauseWrapperProps>`
  */
 export const PlayPauseButton = styled.a<PlayPauseButtonProps>`
   content: '';
-  ${({ playing, preloadState }) => !playing && [PreloadState.NOT_STARTED, PreloadState.HAS_PRELOADED].includes(preloadState) && css`
-    justify-content: center;
-    width: 0;
-    height: 0;
-    border-top: 7px solid transparent;
-    border-right: none;
-    border-bottom: 7px solid transparent;
-    margin-left: 3px;
-    border-left: 12px solid #ffffff;
-  `}
+  ${({ playing, preloadState }) =>
+    !playing &&
+    [PreloadState.NOT_STARTED, PreloadState.HAS_PRELOADED].includes(preloadState) &&
+    css`
+      justify-content: center;
+      width: 0;
+      height: 0;
+      border-top: 7px solid transparent;
+      border-right: none;
+      border-bottom: 7px solid transparent;
+      margin-left: 3px;
+      border-left: 12px solid #ffffff;
+    `}
 
-   ${({ preloadState }) => preloadState === PreloadState.PRELOADING && css`
-    justify-content: center;
-    width: 0;
-    height: 0;
-    border-top: 7px solid transparent;
-    border-right: none;
-    border-bottom: 7px solid transparent;
-    margin-left: 3px;
-    border-left: 12px solid #ffffff;
-    animation: ${rotateLoader} 1.3s infinite;
-  `}
+   ${({ preloadState }) =>
+     preloadState === PreloadState.PRELOADING &&
+     css`
+       justify-content: center;
+       width: 0;
+       height: 0;
+       border-top: 7px solid transparent;
+       border-right: none;
+       border-bottom: 7px solid transparent;
+       margin-left: 3px;
+       border-left: 12px solid #ffffff;
+       animation: ${rotateLoader} 1.3s infinite;
+     `}
 
-  ${({ playing }) => playing && css`
-    display: flex;
-    justify-content: space-between;
-    width: 12px;
-    height: 14px;
-
-    &::before {
-      content: '';
-      width: 4px;
+  ${({ playing }) =>
+    playing &&
+    css`
+      display: flex;
+      justify-content: space-between;
+      width: 12px;
       height: 14px;
-      background-color: #fd4f1a;
-    }
-    &::after {
-      content: '';
-      width: 4px;
-      height: 14px;
-      background-color: #fd4f1a;
-    }
-  `}
+
+      &::before {
+        content: '';
+        width: 4px;
+        height: 14px;
+        background-color: #fd4f1a;
+      }
+      &::after {
+        content: '';
+        width: 4px;
+        height: 14px;
+        background-color: #fd4f1a;
+      }
+    `}
 `;
 
 const TimeGlobal = styled.div`
@@ -127,15 +134,15 @@ export const Duration = styled(TimeGlobal)`
 `;
 
 export const Bar = styled.div`
-    position: relative;
-    display: flex;
-    margin: 0 12px;
-    height: 12px;
-    flex-basis: 0;
-    -webkit-box-flex: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1;
-    cursor: pointer;
+  position: relative;
+  display: flex;
+  margin: 0 12px;
+  height: 12px;
+  flex-basis: 0;
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  cursor: pointer;
   &::before {
     content: '';
     position: absolute;
@@ -165,7 +172,7 @@ export const BarPlayed = styled.div<BarPlayedProps>`
   -webkit-box-orient: horizontal;
   flex-direction: row-reverse;
   z-index: 2;
-  width: ${({ percent }) => `${percent}%`}
+  width: ${({ percent }) => `${percent}%`};
 `;
 
 export const VolumeWrapper = styled.div`
@@ -188,7 +195,8 @@ export const VolumeButtonLink = styled.a`
   background-color: #9a9fb0;
   position: relative;
 
-  &::before, &::after {
+  &::before,
+  &::after {
     content: '';
     position: absolute;
   }
@@ -204,7 +212,7 @@ export const VolumeButtonLink = styled.a`
   }
 
   &::after {
-  left: 10px;
+    left: 10px;
     top: 0;
     width: 6px;
     height: 6px;
@@ -216,18 +224,18 @@ export const VolumeButtonLink = styled.a`
 `;
 
 export const VolumeBarWrapper = styled.div`
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    margin-left: 8px;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  margin-left: 8px;
 
-    > div {
-      position: relative;
-      display: flex;
-      width: 60px;
-      cursor: pointer;
-      background-color: #bec8d2;
-    }
+  > div {
+    position: relative;
+    display: flex;
+    width: 60px;
+    cursor: pointer;
+    background-color: #bec8d2;
+  }
 `;
 
 export const VolumeBarInnerWrapper = styled.div`
@@ -240,6 +248,5 @@ export const Volume = styled.div<VolumeProps>`
   position: absolute;
   top: 0;
   left: 0;
-  width: ${({ size }) => `${size}%` }
+  width: ${({ size }) => `${size}%`};
 `;
-

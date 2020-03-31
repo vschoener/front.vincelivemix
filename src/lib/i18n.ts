@@ -1,10 +1,10 @@
 import i18next from 'i18next';
-import { initReactI18next } from "react-i18next";
+import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import getConfig from 'next/config';
 
-import enTranslate from "../../public/locales/en/common.json";
-import frTranslate from "../../public/locales/fr/common.json";
+import enTranslate from '../../public/locales/en/common.json';
+import frTranslate from '../../public/locales/fr/common.json';
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -17,17 +17,17 @@ i18next
     fallbackLng: 'en',
     preload: ['en', 'fr'],
     interpolation: {
-      escapeValue: false
+      escapeValue: false,
     },
     defaultNS: 'common',
     resources: {
-      en:{
+      en: {
         common: enTranslate,
       },
       fr: {
-        common: frTranslate
+        common: frTranslate,
       },
     },
   });
 
-export { i18next }
+export { i18next };
