@@ -1,10 +1,11 @@
 import * as S from './latest-episodes-style';
 import {useTranslation} from "react-i18next";
-import React, {useEffect, useState} from "react";
+import React from "react";
 import {EpisodesListDto} from "../../server/dto/episodes-list.dto";
 import {getEpisodes} from "../../client/services/episode.service";
 import {i18n, TFunction} from "i18next";
 import {AudioPlayer} from "../audioplayer/audioplayer";
+import useSWR from "swr";
 
 function renderEpisodes(episodes: EpisodesListDto, t: TFunction, i18n: i18n) {
   const dateFormat = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -42,16 +43,11 @@ function renderEpisodes(episodes: EpisodesListDto, t: TFunction, i18n: i18n) {
 export function LatestEpisodes() {
   const { t, i18n } = useTranslation();
 
-  const [episodes, setEpisodes] = useState<EpisodesListDto>([]);
+  const { data: episodes } = useSWR('/api/episodes', getEpisodes);
 
-  useEffect(() => {
-    const fetchEpisodes = async () => {
-      const episodes = await getEpisodes();
-      setEpisodes(episodes);
-    };
-
-    fetchEpisodes();
-  }, []);
+  if (!episodes) {
+    return <></>
+  }
 
   return (
     <S.MainSection className="poca-latest-epiosodes section-padding-80">

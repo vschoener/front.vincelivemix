@@ -18,6 +18,7 @@
     "react-flags": "^0.1.18",
     "react-i18next": "^11.3.3",
     "styled-components": "^5.0.1",
+    "swr": "^0.2.0",
     "url-loader": "^3.0.0"
   },
   "devDependencies": {

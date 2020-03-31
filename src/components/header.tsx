@@ -99,10 +99,10 @@ function Header({ pageTitle }: Props) {
                   </div>
 
                   <div className="top-social-area">
-                    <a href="https://www.facebook.com/pg/vincelivemix" className="fa fa-facebook" aria-hidden="true"></a>
-                    <a href="https://twitter.com/vincelivemix" className="fa fa-twitter" aria-hidden="true"></a>
+                    <a href="https://www.facebook.com/pg/vincelivemix" className="fa fa-facebook" aria-label="Facebook page"></a>
+                    <a href="https://twitter.com/vincelivemix" className="fa fa-twitter" aria-label="Twitter page"></a>
                     {/*<a href="#" className="fa fa-pinterest" aria-hidden="true"></a>*/}
-                    <a href="https://www.instagram.com/vincent.schoener" className="fa fa-instagram" aria-hidden="true"></a>
+                    <a href="https://www.instagram.com/vincent.schoener" className="fa fa-instagram" aria-label="Instagram page"></a>
                     {/*<a href="#" className="fa fa-youtube-play" aria-hidden="true"></a>*/}
                   </div>
 
