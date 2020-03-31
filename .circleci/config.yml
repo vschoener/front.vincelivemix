@@ -36,8 +36,10 @@ workflows:
   version: 2
   build-and-publish:
     jobs:
-      -
+      - test
       - build-and-push:
+          requires:
+            - test
           filters:
             branches:
               only: master
