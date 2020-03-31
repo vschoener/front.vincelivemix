@@ -35,7 +35,7 @@ function Subscribe() {
                         data-animation="fadeInUp"
                         data-delay="500ms"
                       >
-                        {t('subscribe.sub-with-itunes')}
+                        {t('subscribe.sub-with-itunes')}{' '}
                         <img src="/img/podcast-itunes.svg" width="24" alt="iTunes logo" />
                       </a>
                       <a
@@ -46,7 +46,7 @@ function Subscribe() {
                         data-animation="fadeInUp"
                         data-delay="700ms"
                       >
-                        {t('subscribe.sub-with-rss')}
+                        {t('subscribe.sub-with-rss')}{' '}
                         <img src="/img/icon-rss.svg" width="24" alt="Rss logo" />
                       </a>
                       <a
@@ -57,7 +57,7 @@ function Subscribe() {
                         data-animation="fadeInUp"
                         data-delay="700ms"
                       >
-                        {t('subscribe.sub-with-soundcloud')}
+                        {t('subscribe.sub-with-soundcloud')}{' '}
                         <img src="/img/soundcloud.svg" width="24" alt="SoundCloud logo" />
                       </a>
                     </div>
