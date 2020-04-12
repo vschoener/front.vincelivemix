@@ -21,7 +21,8 @@
     "choose-services": "Choose your preferred service to stay updated with the last incoming episode here.",
     "sub-with-itunes": "With Itunes",
     "sub-with-rss": "With RSS",
-    "sub-with-soundcloud": "With SoundCloud"
+    "sub-with-soundcloud": "With SoundCloud",
+    "sub-with-spotify": "With Spotify"
   },
 
   "latest-episodes": {

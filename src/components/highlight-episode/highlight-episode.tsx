@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { i18n, TFunction } from 'i18next';
+import { i18n } from 'i18next';
 import { getHighLightEpisode } from '../../client/services/episode.service';
 import { HighLightEpisodeDto } from '../../server/dto/highlight-episode.dto';
 import { AudioPlayer } from '../audioplayer/audioplayer';
+import {AudioBottomShare} from "../share/audio-bottom-share";
 
-function renderWithEpisode(highlightEpisode: HighLightEpisodeDto, t: TFunction, i18nLib: i18n) {
+function renderWithEpisode(highlightEpisode: HighLightEpisodeDto, i18nLib: i18n) {
   const dateFormat = {
     weekday: 'long',
     year: 'numeric',
@@ -38,23 +39,7 @@ function renderWithEpisode(highlightEpisode: HighLightEpisodeDto, t: TFunction, 
             durationInSeconds={highlightEpisode.durationAudioInSecond}
           />
         </div>
-        <div className="likes-share-download d-flex align-items-center justify-content-between">
-          <a>
-            <i className="fa fa-heart" aria-hidden="true" />
-            {t('like')}({t('coming-soon')})
-          </a>
-          <div>
-            <a className="mr-4">
-              <i className="fa fa-share-alt" aria-hidden="true" />
-              {t('share')}({t('coming-soon')})
-            </a>
-            <a href={highlightEpisode.audioLink} download>
-              <i className="fa fa-download" aria-hidden="true" />
-
-              {t('download')}
-            </a>
-          </div>
-        </div>
+        <AudioBottomShare episode={highlightEpisode} />
       </div>
     </>
   );
@@ -80,7 +65,7 @@ export function HighLightEpisode() {
       data-delay="900ms"
     >
       {highlightEpisode ? (
-        renderWithEpisode(highlightEpisode, t, i18nLib)
+        renderWithEpisode(highlightEpisode, i18nLib)
       ) : (
         <>
           {t('loading')}

@@ -21,7 +21,8 @@
     "choose-services": "Choisi ton service préféré afin d'etre notifié des nouveaux épisodes",
     "sub-with-itunes": "Avec Itunes",
     "sub-with-rss": "Avec flux RSS",
-    "sub-with-soundcloud": "Avec SoundCloud"
+    "sub-with-soundcloud": "Avec SoundCloud",
+    "sub-with-spotify": "Avec Spotify"
   },
 
   "latest-episodes": {

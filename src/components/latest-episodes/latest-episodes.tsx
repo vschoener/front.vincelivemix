@@ -6,6 +6,7 @@ import * as S from './latest-episodes-style';
 import { EpisodesListDto } from '../../server/dto/episodes-list.dto';
 import { getEpisodes } from '../../client/services/episode.service';
 import { AudioPlayer } from '../audioplayer/audioplayer';
+import { AudioBottomShare } from '../share/audio-bottom-share';
 
 function renderEpisodes(episodes: EpisodesListDto, t: TFunction, i18nLib: i18n) {
   const dateFormat = {
@@ -41,22 +42,7 @@ function renderEpisodes(episodes: EpisodesListDto, t: TFunction, i18nLib: i18n) 
                 durationInSeconds={episode?.durationAudioInSecond}
               />
             </div>
-            <div className="likes-share-download d-flex align-items-center justify-content-between">
-              <a>
-                <i className="fa fa-heart" aria-hidden="true" />
-                {t('like')} ({t('coming-soon')})
-              </a>
-              <div>
-                <a className="mr-4">
-                  <i className="fa fa-share-alt" aria-hidden="true" />
-                  {t('share')}({t('coming-soon')})
-                </a>
-                <a href={episode.audioLink} download>
-                  <i className="fa fa-download" aria-hidden="true" />
-                  {t('download')}
-                </a>
-              </div>
-            </div>
+            <AudioBottomShare episode={episode} />
           </div>
         </div>
       </div>
