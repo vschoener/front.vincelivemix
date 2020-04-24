@@ -1,12 +1,12 @@
 import { useTranslation } from 'react-i18next';
 import React from 'react';
 import useSWR from 'swr';
-import * as S from './latest-episodes-style';
+import * as S from './latest-block-episodes-style';
 import { EpisodesListDto } from '../../server/dto/episodes-list.dto';
 import { getEpisodes } from '../../client/services/episode.service';
 import { AudioPlayer } from '../audioplayer/audioplayer';
 import { AudioBottomShare } from '../share/audio-bottom-share';
-import {EpisodeHeader} from "../episode/episode-block/episode-header";
+import { EpisodeHeader } from "../episode/episode-block/episode-header";
 
 function renderEpisodes(episodes: EpisodesListDto) {
   return episodes.slice(1, 5).map((episode) => (
@@ -33,7 +33,7 @@ function renderEpisodes(episodes: EpisodesListDto) {
   ));
 }
 
-export function LatestEpisodes() {
+export function LatestBlockEpisodes() {
   const { t } = useTranslation();
 
   const { data: episodes } = useSWR('/api/episodes', getEpisodes);

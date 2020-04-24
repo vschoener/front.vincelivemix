@@ -2,14 +2,14 @@ import React from 'react';
 
 import { Layout } from '../components/layout/default';
 import Subscribe from '../components/subscribe/subscribe';
-import { LatestEpisodes } from '../components/latest-episodes/latest-episodes';
+import { LatestBlockEpisodes } from '../components/latest-episodes/latest-block-episodes';
 
 function HomePage() {
   return (
     <>
       <Layout>
         <Subscribe />
-        <LatestEpisodes />
+        <LatestBlockEpisodes />
       </Layout>
     </>
   );

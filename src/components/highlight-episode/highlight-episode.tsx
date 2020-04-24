@@ -2,30 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getHighLightEpisode } from '../../client/services/episode.service';
 import { HighLightEpisodeDto } from '../../server/dto/highlight-episode.dto';
-import { AudioPlayer } from '../audioplayer/audioplayer';
-import {AudioBottomShare} from "../share/audio-bottom-share";
-import {EpisodeHeader} from "../episode/episode-block/episode-header";
-
-function renderWithEpisode(highlightEpisode: HighLightEpisodeDto) {
-  return (
-    <>
-      <div className="poca-music-thumbnail">
-        <img src={highlightEpisode.coverImage} alt="live-mix-72-cover" />
-      </div>
-      <div className="poca-music-content">
-        <EpisodeHeader episode={highlightEpisode}/>
-        <div className="poca-music-player">
-          <AudioPlayer
-            audioLink={highlightEpisode.audioLink}
-            duration={highlightEpisode.itunesDuration}
-            durationInSeconds={highlightEpisode.durationAudioInSecond}
-          />
-        </div>
-        <AudioBottomShare episode={highlightEpisode} />
-      </div>
-    </>
-  );
-}
+import { VerticalEpisode } from "../episode/vertical-episode/vertical-episode";
 
 export function HighLightEpisode() {
   const { t } = useTranslation();
@@ -42,12 +19,12 @@ export function HighLightEpisode() {
 
   return (
     <div
-      className="poca-music-area mt-100 d-flex align-items-center flex-wrap"
+      className="mt-100"
       data-animation="fadeInUp"
       data-delay="900ms"
     >
       {highlightEpisode ? (
-        renderWithEpisode(highlightEpisode)
+        <VerticalEpisode episode={highlightEpisode} />
       ) : (
         <>
           {t('loading')}

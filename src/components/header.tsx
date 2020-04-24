@@ -1,4 +1,5 @@
 import React from 'react';
+import { useRouter } from "next/router";
 
 import { useTranslation } from 'react-i18next';
 import Head from './head';
@@ -12,8 +13,19 @@ type Props = {
 
 function Header({ pageTitle }: Props) {
   const { i18n } = useTranslation();
+  const router = useRouter()
 
   const currentLang = i18n.language.toUpperCase();
+  const pages = [
+    {
+      href: '/',
+      value: 'Home'
+    },
+    {
+      href: '/episodes',
+      value: 'Episodes'
+    }
+  ];
 
   return (
     <>
@@ -50,9 +62,11 @@ function Header({ pageTitle }: Props) {
 
                 <div className="classynav">
                   <ul id="nav">
-                    <li className="current-item">
-                      <a href="/">Home</a>
-                    </li>
+                    {pages.map(page => (
+                      <li className={page.href === router.pathname ? 'current-item' : ''}>
+                        <a href={page.href}>{page.value}</a>
+                      </li>
+                    ))}
                     <li>
                       <LanguageHeader currentLang={currentLang} />
                     </li>
