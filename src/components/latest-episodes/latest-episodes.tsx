@@ -9,7 +9,7 @@ import { AudioBottomShare } from '../share/audio-bottom-share';
 import {EpisodeHeader} from "../episode/episode-block/episode-header";
 
 function renderEpisodes(episodes: EpisodesListDto) {
-  return episodes.slice(1).map((episode) => (
+  return episodes.slice(1, 5).map((episode) => (
     <>
       <div className="col-12 col-md-6 single_gallery_item entre wow fadeInUp" data-wow-delay="0.2s">
         <div className="poca-music-area style-2 d-flex align-items-center flex-wrap">
