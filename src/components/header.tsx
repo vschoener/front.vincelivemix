@@ -6,6 +6,7 @@ import Head from './head';
 import { LanguageHeader } from './language/language-header';
 
 import * as S from './header.styled';
+import Link from "next/link";
 
 type Props = {
   pageTitle?: string;
@@ -42,11 +43,13 @@ function Header({ pageTitle }: Props) {
           <div className="classy-nav-container breakpoint-off light left">
             <nav className="classy-navbar justify-content-between" id="pocaNav">
               <S.LogoWrapper>
-                <a className="nav-brand" href="/">
+                <Link href="/">
+                <a className="nav-brand">
                   <S.LogoImage src="/img/logo.jpg" />
 
                   <S.LogoText>Vince Live Mix</S.LogoText>
                 </a>
+                </Link>
               </S.LogoWrapper>
               <div className="classy-navbar-toggler">
                 <span className="navbarToggler" />
@@ -64,7 +67,9 @@ function Header({ pageTitle }: Props) {
                   <ul id="nav">
                     {pages.map(page => (
                       <li className={page.href === router.pathname ? 'current-item' : ''}>
-                        <a href={page.href}>{page.value}</a>
+                        <Link href={page.href}>
+                          <a>{page.value}</a>
+                        </Link>
                       </li>
                     ))}
                     <li>
