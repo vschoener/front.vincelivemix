@@ -7,7 +7,7 @@ import { VerticalEpisode } from "../episode/vertical-episode/vertical-episode";
 export function HighLightEpisode() {
   const { t } = useTranslation();
 
-  const [highlightEpisode, setHighlightEpisode] = useState<HighLightEpisodeDto>();
+  const [highlightEpisode, setHighlightEpisode] = useState<HighLightEpisodeDto| null>();
 
   useEffect(() => {
     const fetchHighLightEpisode = async () => {
