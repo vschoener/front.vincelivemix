@@ -1,12 +1,12 @@
 import React from 'react';
-import { useRouter } from "next/router";
+import { useRouter } from 'next/router';
 
 import { useTranslation } from 'react-i18next';
+import Link from 'next/link';
 import Head from './head';
 import { LanguageHeader } from './language/language-header';
 
 import * as S from './header.styled';
-import Link from "next/link";
 
 type Props = {
   pageTitle?: string;
@@ -14,18 +14,18 @@ type Props = {
 
 function Header({ pageTitle }: Props) {
   const { i18n } = useTranslation();
-  const router = useRouter()
+  const router = useRouter();
 
   const currentLang = i18n.language.toUpperCase();
   const pages = [
     {
       href: '/',
-      value: 'Home'
+      value: 'Home',
     },
     {
       href: '/episodes',
-      value: 'Episodes'
-    }
+      value: 'Episodes',
+    },
   ];
 
   return (
@@ -44,11 +44,11 @@ function Header({ pageTitle }: Props) {
             <nav className="classy-navbar justify-content-between" id="pocaNav">
               <S.LogoWrapper>
                 <Link href="/">
-                <a className="nav-brand">
-                  <S.LogoImage src="/img/logo.jpg" />
+                  <a className="nav-brand">
+                    <S.LogoImage src="/img/logo.jpg" />
 
-                  <S.LogoText>Vince Live Mix</S.LogoText>
-                </a>
+                    <S.LogoText>Vince Live Mix</S.LogoText>
+                  </a>
                 </Link>
               </S.LogoWrapper>
               <div className="classy-navbar-toggler">
@@ -65,7 +65,7 @@ function Header({ pageTitle }: Props) {
 
                 <div className="classynav">
                   <ul id="nav">
-                    {pages.map(page => (
+                    {pages.map((page) => (
                       <li className={page.href === router.pathname ? 'current-item' : ''}>
                         <Link href={page.href}>
                           <a>{page.value}</a>

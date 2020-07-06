@@ -6,7 +6,7 @@ import { EpisodesListDto } from '../../server/dto/episodes-list.dto';
 import { getEpisodes } from '../../client/services/episode.service';
 import { AudioPlayer } from '../audioplayer/audioplayer';
 import { AudioBottomShare } from '../share/audio-bottom-share';
-import { EpisodeHeader } from "../episode/episode-block/episode-header";
+import { EpisodeHeader } from '../episode/episode-block/episode-header';
 
 function renderEpisodes(episodes: EpisodesListDto) {
   return episodes.slice(1, 5).map((episode) => (
@@ -17,7 +17,7 @@ function renderEpisodes(episodes: EpisodesListDto) {
             <img src={episode.coverImage} alt="" />
           </div>
           <div className="poca-music-content text-center">
-            <EpisodeHeader episode={episode}/>
+            <EpisodeHeader episode={episode} />
             <div className="poca-music-player">
               <AudioPlayer
                 audioLink={episode?.audioLink}

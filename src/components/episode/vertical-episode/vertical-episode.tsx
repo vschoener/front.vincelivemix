@@ -1,12 +1,12 @@
-import { Episode } from "../../../server/dto/episode.dto";
-import {EpisodeHeader} from "../episode-block/episode-header";
-import {AudioPlayer} from "../../audioplayer/audioplayer";
-import {AudioBottomShare} from "../../share/audio-bottom-share";
-import React from "react";
+import React from 'react';
+import { Episode } from '../../../server/dto/episode.dto';
+import { EpisodeHeader } from '../episode-block/episode-header';
+import { AudioPlayer } from '../../audioplayer/audioplayer';
+import { AudioBottomShare } from '../../share/audio-bottom-share';
 
 type Props = {
-  episode: Episode
-}
+  episode: Episode;
+};
 
 export function VerticalEpisode({ episode }: Props) {
   return (
@@ -15,7 +15,7 @@ export function VerticalEpisode({ episode }: Props) {
         <img src={episode.coverImage} alt="live-mix-72-cover" />
       </div>
       <div className="poca-music-content">
-        <EpisodeHeader episode={episode}/>
+        <EpisodeHeader episode={episode} />
         <div className="poca-music-player">
           <AudioPlayer
             audioLink={episode.audioLink}
@@ -26,5 +26,5 @@ export function VerticalEpisode({ episode }: Props) {
         <AudioBottomShare episode={episode} />
       </div>
     </div>
-  )
+  );
 }

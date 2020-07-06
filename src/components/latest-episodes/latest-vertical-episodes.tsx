@@ -3,7 +3,7 @@ import React from 'react';
 import useSWR from 'swr';
 import * as S from './latest-block-episodes-style';
 import { getEpisodes } from '../../client/services/episode.service';
-import { VerticalEpisode } from "../episode/vertical-episode/vertical-episode";
+import { VerticalEpisode } from '../episode/vertical-episode/vertical-episode';
 
 export function LatestVerticalEpisodes() {
   const { t } = useTranslation();
@@ -28,11 +28,11 @@ export function LatestVerticalEpisodes() {
       </div>
 
       <div className="container">
-        {episodes.map(episode => (
+        {episodes.map((episode) => (
           <div className="mt-30">
             <VerticalEpisode episode={episode} />
           </div>
-        )) }
+        ))}
       </div>
     </S.MainSection>
   );

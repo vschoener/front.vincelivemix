@@ -1,6 +1,6 @@
 import React from 'react';
-import { Episode } from '../../../server/dto/episode.dto';
 import { useTranslation } from 'react-i18next';
+import { Episode } from '../../../server/dto/episode.dto';
 import { episodeDurationFormat } from '../../../lib/date';
 
 type Props = {
@@ -18,7 +18,8 @@ export function EpisodeHeader({ episode }: Props) {
       <h2>{episode.title}</h2>
       <div className="music-meta-data">
         <p>
-          By <a className="music-author">Vince</a> <a className="music-duration">{episode.itunesDuration}</a>
+          By <a className="music-author">Vince</a>{' '}
+          <a className="music-duration">{episode.itunesDuration}</a>
         </p>
       </div>
     </>

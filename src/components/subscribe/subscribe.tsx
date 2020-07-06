@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import getConfig from 'next/config';
 import * as S from './subscribe-style';
-import { HighLightEpisode } from "../highlight-episode/highlight-episode";
+import { HighLightEpisode } from '../highlight-episode/highlight-episode';
 
 const { publicRuntimeConfig } = getConfig();
 
