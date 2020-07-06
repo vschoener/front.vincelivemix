@@ -60,17 +60,6 @@ function Subscribe() {
                         {t('subscribe.sub-with-soundcloud')}{' '}
                         <img src="/img/soundcloud.svg" width="24" alt="SoundCloud logo" />
                       </a>
-                      <a
-                        href="https://open.spotify.com/show/2uTRSh7MAbRDyKjAxkg6ff?si=-TyUjnVnRsKr0pyH21pECA"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn poca-btn m-2 ml-0"
-                        data-animation="fadeInUp"
-                        data-delay="700ms"
-                      >
-                        {t('subscribe.sub-with-spotify')}{' '}
-                        <img src="/img/spotify.svg" width="24" alt="Spotify logo" />
-                      </a>
                     </div>
                   </div>
                   <div className="mt-100">
