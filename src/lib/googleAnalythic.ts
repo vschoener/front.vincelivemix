@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/camelcase */
 import getConfig from 'next/config';
 import { isProduction } from './env';
 

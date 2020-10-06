@@ -1,15 +1,17 @@
 {
+  "root": true,
   "env": {
     "browser": true,
     "es6": true
   },
   "extends": [
+    "airbnb",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
-    "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended",
-    "airbnb",
-    "plugin:prettier/recommended"
+    "prettier",
+    "prettier/@typescript-eslint"
   ],
   "globals": {
     "Atomics": "readonly",
@@ -23,10 +25,7 @@
     "ecmaVersion": 2019,
     "sourceType": "module"
   },
-  "plugins": [
-    "react",
-    "@typescript-eslint"
-  ],
+  "plugins": ["react", "@typescript-eslint"],
   "settings": {
     "react": {
       "version": "detect"
@@ -50,6 +49,14 @@
     // As it warns mutating dom element and no other choice...
     "no-param-reassign": 0,
     // TS rule youu beaches ;)
-    "react/prop-types": 0
+    "react/prop-types": 0,
+
+    // note you must disable the base rule as it can report incorrect errors
+    "no-redeclare": "off",
+    "@typescript-eslint/no-redeclare": ["error"],
+
+    // note you must disable the base rule as it can report incorrect errors
+    "no-shadow": "off",
+    "@typescript-eslint/no-shadow": ["error"]
   }
 }

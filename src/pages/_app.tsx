@@ -9,7 +9,7 @@ import '../lib/i18n';
 
 Router.events.on('routeChangeComplete', (url) => gtag.pageview(url));
 
-export type AppProps = {} & AppInitialProps;
+export type AppProps = Record<string, unknown> & AppInitialProps;
 
 class AppRoot extends App<AppProps> {
   /*

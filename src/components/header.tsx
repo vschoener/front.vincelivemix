@@ -66,7 +66,10 @@ function Header({ pageTitle }: Props) {
                 <div className="classynav">
                   <ul id="nav">
                     {pages.map((page) => (
-                      <li className={page.href === router.pathname ? 'current-item' : ''}>
+                      <li
+                        key={page.href}
+                        className={page.href === router.pathname ? 'current-item' : ''}
+                      >
                         <Link href={page.href}>
                           <a>{page.value}</a>
                         </Link>
