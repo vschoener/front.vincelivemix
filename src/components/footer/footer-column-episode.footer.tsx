@@ -14,7 +14,7 @@ function renderLastEpisodes(episodes: EpisodesListDto, i18nLib: i18n) {
   };
 
   return episodes.slice(0, 3).map((episode) => (
-    <div className="single-latest-episodes">
+    <div key={episode.id} className="single-latest-episodes">
       <p className="episodes-date">
         {new Date(episode.publishedAt).toLocaleDateString(i18nLib.language, dateFormat)}
       </p>

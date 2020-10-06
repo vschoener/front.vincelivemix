@@ -29,7 +29,7 @@ export function LatestVerticalEpisodes() {
 
       <div className="container">
         {episodes.map((episode) => (
-          <div className="mt-30">
+          <div key={episode.id} className="mt-30">
             <VerticalEpisode episode={episode} />
           </div>
         ))}
