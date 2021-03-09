@@ -22,7 +22,7 @@
     "react-flags": "^0.1.18",
     "react-i18next": "^11.3.4",
     "styled-components": "^5.0.1",
-    "swr": "^0.4.0",
+    "swr": "^0.5.0",
     "url-loader": "^4.0.0"
   },
   "devDependencies": {
