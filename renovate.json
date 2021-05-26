@@ -3,10 +3,21 @@
   "assignees": ["vschoener"],
   "packageRules": [
     {
+      "groupName": "jest-dependencies",
+      "automerge": false,
+      "labels": ["jest-dependencies"],
+      "packagePatterns": ["jest"]
+    },
+    {
       "updateTypes": ["minor", "patch", "pin", "digest"],
       "automerge": true,
       "groupName": "minors-update",
       "labels": ["dependencies-minors"]
+    },
+    {
+      "matchDepTypes": ["devDependencies"],
+      "automerge": true,
+      "labels": ["dev-dependencies"]
     }
   ]
 }
