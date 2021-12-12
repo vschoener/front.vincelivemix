@@ -1,4 +1,4 @@
-export const episodeDurationFormat = {
+export const episodeDurationFormat: Intl.DateTimeFormatOptions = {
   weekday: 'long',
   year: 'numeric',
   month: 'long',

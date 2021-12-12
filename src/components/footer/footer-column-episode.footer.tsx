@@ -4,19 +4,13 @@ import { i18n } from 'i18next';
 import useSWR from 'swr';
 import { EpisodesListDto } from '../../server/dto/episodes-list.dto';
 import { getEpisodes } from '../../client/services/episode.service';
+import { episodeDurationFormat } from '../../lib/date';
 
 function renderLastEpisodes(episodes: EpisodesListDto, i18nLib: i18n) {
-  const dateFormat = {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  };
-
   return episodes.slice(0, 3).map((episode) => (
     <div key={episode.id} className="single-latest-episodes">
       <p className="episodes-date">
-        {new Date(episode.publishedAt).toLocaleDateString(i18nLib.language, dateFormat)}
+        {new Date(episode.publishedAt).toLocaleDateString(i18nLib.language, episodeDurationFormat)}
       </p>
       <a href={episode.audioLink} className="episodes-title">
         {episode.title}
