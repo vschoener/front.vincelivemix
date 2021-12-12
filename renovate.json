@@ -1,9 +1,6 @@
 {
   "labels": ["dependencies"],
   "assignees": ["vschoener"],
-  "extends": [
-    "group:nodeJs"
-  ],
   "packageRules": [
     {
       "groupName": "jest-dependencies",
@@ -27,6 +24,21 @@
       "matchDepTypes": ["devDependencies"],
       "automerge": true,
       "labels": ["dev-dependencies"]
+    },
+    {
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchPackageNames": [
+        "node"
+      ],
+      "matchPackagePatterns": [
+        "/node$"
+      ],
+      "excludePackageNames": [
+        "calico/node"
+      ],
+      "commitMessageTopic": "Node.js"
     }
   ]
 }
