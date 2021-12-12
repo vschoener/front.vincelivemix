@@ -5,13 +5,13 @@ import * as S from './latest-block-episodes-style';
 import { getEpisodes } from '../../client/services/episode.service';
 import { VerticalEpisode } from '../episode/vertical-episode/vertical-episode';
 
-export function LatestVerticalEpisodes() {
+export const LatestVerticalEpisodes = () => {
   const { t } = useTranslation();
 
   const { data: episodes } = useSWR('/api/episodes', getEpisodes);
 
   if (!episodes) {
-    return <></>;
+    return null;
   }
 
   return (
@@ -36,4 +36,4 @@ export function LatestVerticalEpisodes() {
       </div>
     </S.MainSection>
   );
-}
+};

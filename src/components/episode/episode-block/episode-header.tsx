@@ -7,7 +7,7 @@ type Props = {
   episode: Episode;
 };
 
-export function EpisodeHeader({ episode }: Props) {
+export const EpisodeHeader = ({ episode }: Props) => {
   const { i18n } = useTranslation();
 
   return (
@@ -24,4 +24,4 @@ export function EpisodeHeader({ episode }: Props) {
       </div>
     </>
   );
-}
+};

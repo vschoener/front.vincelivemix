@@ -10,36 +10,38 @@ import { EpisodeHeader } from '../episode/episode-block/episode-header';
 
 function renderEpisodes(episodes: EpisodesListDto) {
   return episodes.slice(1, 5).map((episode) => (
-    <>
-      <div className="col-12 col-md-6 single_gallery_item entre wow fadeInUp" data-wow-delay="0.2s">
-        <div className="poca-music-area style-2 d-flex align-items-center flex-wrap">
-          <div className="poca-music-thumbnail">
-            <img src={episode.coverImage} alt="" />
+    <div
+      key={episode.id}
+      className="col-12 col-md-6 single_gallery_item entre wow fadeInUp"
+      data-wow-delay="0.2s"
+    >
+      <div className="poca-music-area style-2 d-flex align-items-center flex-wrap">
+        <div className="poca-music-thumbnail">
+          <img src={episode.coverImage} alt="" />
+        </div>
+        <div className="poca-music-content text-center">
+          <EpisodeHeader episode={episode} />
+          <div className="poca-music-player">
+            <AudioPlayer
+              audioLink={episode?.audioLink}
+              duration={episode?.itunesDuration}
+              durationInSeconds={episode?.durationAudioInSecond}
+            />
           </div>
-          <div className="poca-music-content text-center">
-            <EpisodeHeader episode={episode} />
-            <div className="poca-music-player">
-              <AudioPlayer
-                audioLink={episode?.audioLink}
-                duration={episode?.itunesDuration}
-                durationInSeconds={episode?.durationAudioInSecond}
-              />
-            </div>
-            <AudioBottomShare episode={episode} />
-          </div>
+          <AudioBottomShare episode={episode} />
         </div>
       </div>
-    </>
+    </div>
   ));
 }
 
-export function LatestBlockEpisodes() {
+export const LatestBlockEpisodes = () => {
   const { t } = useTranslation();
 
   const { data: episodes } = useSWR('/api/episodes', getEpisodes);
 
   if (!episodes) {
-    return <></>;
+    return null;
   }
 
   return (
@@ -80,4 +82,4 @@ export function LatestBlockEpisodes() {
       {/* </div> */}
     </S.MainSection>
   );
-}
+};

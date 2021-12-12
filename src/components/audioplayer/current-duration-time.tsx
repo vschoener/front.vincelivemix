@@ -5,6 +5,4 @@ type Props = {
   time: string;
 };
 
-export function CurrentDurationTime({ time }: Props) {
-  return <S.Time>{time}</S.Time>;
-}
+export const CurrentDurationTime = ({ time }: Props) => <S.Time>{time}</S.Time>;

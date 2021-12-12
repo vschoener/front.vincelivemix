@@ -16,7 +16,7 @@ type Props = {
   url?: string;
 };
 
-const Head = ({ title, description, url }: Props) => (
+const Head: React.FC<Props> = ({ title = '', description = '', url = '' }) => (
   <NextHead>
     <meta charSet="UTF-8" />
     <meta lang="en" />

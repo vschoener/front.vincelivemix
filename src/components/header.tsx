@@ -12,7 +12,7 @@ type Props = {
   pageTitle?: string;
 };
 
-function Header({ pageTitle }: Props) {
+const Header: React.FC<Props> = ({ pageTitle }) => {
   const { i18n } = useTranslation();
   const router = useRouter();
 
@@ -149,6 +149,6 @@ function Header({ pageTitle }: Props) {
       </header>
     </>
   );
-}
+};
 
 export default Header;

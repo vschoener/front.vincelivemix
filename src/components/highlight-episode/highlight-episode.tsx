@@ -4,7 +4,7 @@ import { getHighLightEpisode } from '../../client/services/episode.service';
 import { HighLightEpisodeDto } from '../../server/dto/highlight-episode.dto';
 import { VerticalEpisode } from '../episode/vertical-episode/vertical-episode';
 
-export function HighLightEpisode() {
+export const HighLightEpisode = () => {
   const { t } = useTranslation();
 
   const [highlightEpisode, setHighlightEpisode] = useState<HighLightEpisodeDto | null>();
@@ -29,4 +29,4 @@ export function HighLightEpisode() {
       )}
     </div>
   );
-}
+};

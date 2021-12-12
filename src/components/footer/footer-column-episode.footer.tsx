@@ -19,12 +19,12 @@ function renderLastEpisodes(episodes: EpisodesListDto, i18nLib: i18n) {
   ));
 }
 
-export function FooterColumnEpisode() {
+export const FooterColumnEpisode = () => {
   const { t, i18n: i18nLib } = useTranslation();
   const { data: episodes } = useSWR('/api/episodes', getEpisodes);
 
   if (!episodes) {
-    return <></>;
+    return null;
   }
 
   return (
@@ -33,4 +33,4 @@ export function FooterColumnEpisode() {
       {renderLastEpisodes(episodes, i18nLib)}
     </div>
   );
-}
+};

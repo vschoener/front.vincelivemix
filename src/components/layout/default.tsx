@@ -1,9 +1,9 @@
-import React, { FunctionComponent } from 'react';
+import React from 'react';
 
 import Header from '../header';
 import Footer from '../footer/footer';
 
-export const Layout: FunctionComponent = ({ children }) => (
+export const Layout: React.FC = ({ children }) => (
   <>
     <Header />
 

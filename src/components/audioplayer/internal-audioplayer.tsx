@@ -8,7 +8,7 @@ type Props = {
   durationInSeconds: number;
 };
 
-export function InternalAudioPlayer({ audio, duration, durationInSeconds }: Props) {
+export const InternalAudioPlayer = ({ audio, duration, durationInSeconds }: Props) => {
   const [isPlaying, setPlayingState] = useState<boolean>(false);
   const [currentTime, setCurrentTime] = useState<number>(0);
   const [currentPositionPercent, setCurrentPositionPercent] = useState<number>(0);
@@ -126,4 +126,4 @@ export function InternalAudioPlayer({ audio, duration, durationInSeconds }: Prop
       </S.VolumeWrapper>
     </S.AudioPlayer>
   );
-}
+};

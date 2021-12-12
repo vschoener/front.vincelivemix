@@ -6,7 +6,7 @@ type Props = {
   episode: Episode;
 };
 
-export function AudioBottomShare({ episode }: Props) {
+export const AudioBottomShare = ({ episode }: Props) => {
   const { t } = useTranslation();
 
   return (
@@ -24,4 +24,4 @@ export function AudioBottomShare({ episode }: Props) {
       </div>
     </div>
   );
-}
+};

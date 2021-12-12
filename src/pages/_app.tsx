@@ -11,6 +11,13 @@ Router.events.on('routeChangeComplete', (url) => gtag.pageview(url));
 
 export type AppProps = Record<string, unknown> & AppInitialProps;
 
+const BaseApp = ({
+  Component,
+  pageProps,
+}: AppProps & {
+  Component: NextComponentType;
+}) => <Component {...pageProps} />;
+
 class AppRoot extends App<AppProps> {
   /*
    * A page that relies on publicRuntimeConfig must use getInitialProps to opt-out
@@ -30,15 +37,6 @@ class AppRoot extends App<AppProps> {
   render() {
     return <BaseApp {...this.props} />;
   }
-}
-
-function BaseApp({
-  Component,
-  pageProps,
-}: AppProps & {
-  Component: NextComponentType;
-}) {
-  return <Component {...pageProps} />;
 }
 
 export default AppRoot;

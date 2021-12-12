@@ -1,5 +1,5 @@
 import React from 'react';
-import Document, { Head, Main, NextScript, DocumentContext } from 'next/document';
+import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 import GoogleTag from '../components/tags/google-tag';
 
@@ -31,14 +31,14 @@ export default class MyDocument extends Document {
 
   render(): JSX.Element {
     return (
-      <html lang="en">
+      <Html lang="en">
         <Head />
         <body>
           <Main />
           <NextScript />
           <GoogleTag />
         </body>
-      </html>
+      </Html>
     );
   }
 }

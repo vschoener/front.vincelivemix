@@ -4,13 +4,13 @@ import getConfig from 'next/config';
 
 import { isProduction } from '../../lib/env';
 
-function GoogleTag() {
+const GoogleTag = () => {
   const {
     publicRuntimeConfig: { google },
   } = getConfig();
 
   if (!isProduction()) {
-    return <></>;
+    return null;
   }
 
   return (
@@ -30,6 +30,6 @@ function GoogleTag() {
       />
     </>
   );
-}
+};
 
 export default GoogleTag;
