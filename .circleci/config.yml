@@ -1,10 +1,10 @@
 version: 2.1
 orbs:
-  node: circleci/node@1.1.6
+  node: circleci/node@5.0.0
 jobs:
   test:
-    executor:
-      name: node/default
+    docker:
+      - image: cimg/node:17.3.0
     steps:
       - checkout
       - persist_to_workspace:
@@ -19,7 +19,7 @@ jobs:
     environment:
       IMAGE_NAME: sdevilcry/front.vincelivemix
     docker:
-      - image: circleci/node:17.2.0
+      - image: cimg/node:17.3.0
     steps:
       - setup_remote_docker:
           docker_layer_caching: false # Plan is disabled
