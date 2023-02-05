@@ -3,6 +3,12 @@
   "assignees": ["vschoener"],
   "packageRules": [
     {
+      "groupName": "nestjs-dependencies",
+      "automerge": false,
+      "labels": ["next"],
+      "packagePatterns": ["^@next"]
+    },
+    {
       "groupName": "jest-dependencies",
       "automerge": false,
       "labels": ["jest-dependencies"],
