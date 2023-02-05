@@ -19,7 +19,6 @@
     "next": "^12.0.7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-flags": "^0.1.18",
     "react-i18next": "^11.15.0",
     "styled-components": "^5.3.3",
     "swr": "^1.1.1",
