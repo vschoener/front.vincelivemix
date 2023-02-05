@@ -10,11 +10,17 @@ jobs:
           cache-path: ~/project/node_modules
           override-ci-command: npm install
       - run: npm run lint
+      - persist_to_workspace:
+          root: /tmp/app
+          path:
+            - Dockerfile
   build-and-push:
     environment:
       IMAGE_NAME: sdevilcry/front.vincelivemix
     executor: node/default
     steps:
+      - attach_workspace:
+        at: /tmp/app
       - run: |
           IMAGE_TAG="0.0.${CIRCLE_BUILD_NUM}"
           docker build -t $IMAGE_NAME:latest -f Dockerfile .
