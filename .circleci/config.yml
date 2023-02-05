@@ -17,7 +17,7 @@ jobs:
   build-and-push:
     environment:
       IMAGE_NAME: sdevilcry/front.vincelivemix
-    executor: node/default
+    executor: machine
     steps:
       - attach_workspace:
           at: ~/
