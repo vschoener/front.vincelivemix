@@ -12,7 +12,7 @@ jobs:
       - run: npm run lint
       - persist_to_workspace:
           root: /tmp/app
-          path:
+          paths:
             - Dockerfile
   build-and-push:
     environment:
