@@ -15,9 +15,10 @@ jobs:
           paths:
             - project
   build-and-push:
+    machine:
+      image: ubuntu-2204:2022.04.2
     environment:
       IMAGE_NAME: sdevilcry/front.vincelivemix
-    executor: machine
     steps:
       - attach_workspace:
           at: ~/
