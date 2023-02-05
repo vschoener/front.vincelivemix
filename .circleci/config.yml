@@ -1,20 +1,18 @@
 version: 2.1
 orbs:
-  node: circleci/node@5.0.0
+  node: circleci/node@5.1.0
 jobs:
   test:
     docker:
       - image: cimg/node:17.3.0
     steps:
-      - checkout
-      - persist_to_workspace:
-          root: .
-          paths:
-            - .
-      - node/with-cache:
-          steps:
-            - run: npm install
-            - run: npm run lint
+      executor: node/default
+      steps:
+        - checkout
+        - node/install-packages:
+            cache-path: ~/project/node_modules
+            override-ci-command: npm install
+      - run: npm run lint
   build-and-push:
     environment:
       IMAGE_NAME: sdevilcry/front.vincelivemix
