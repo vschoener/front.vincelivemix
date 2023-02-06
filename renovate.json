@@ -3,10 +3,10 @@
   "assignees": ["vschoener"],
   "packageRules": [
     {
-      "groupName": "nestjs-dependencies",
+      "groupName": "Next-and-React",
       "automerge": false,
-      "labels": ["next"],
-      "packagePatterns": ["^@next"]
+      "labels": ["next-and-react"],
+      "packagePatterns": ["next", "react"]
     },
     {
       "groupName": "jest-dependencies",
