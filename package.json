@@ -26,7 +26,7 @@
   },
   "devDependencies": {
     "@types/gtag.js": "0.0.12",
-    "@types/node": "^18.0.0",
+    "@types/node": "^22.0.0",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "@types/styled-components": "^5.1.17",
