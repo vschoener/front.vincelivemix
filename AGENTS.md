@@ -28,6 +28,8 @@ When introducing or recommending a new development tool (e.g. `pre-commit`, `tas
 Before starting to work on a new branch, think about pulling the default branch to have up to date code.
 Read the `package.json` and `scripts` attribute to get the commands.
 
+**Environment variables:** Copy [`.env.example`](.env.example) to `.env`. With [direnv](https://direnv.net/) and [`.envrc`](.envrc), variables load when you enter the repo (run `direnv allow` once per clone). This uses direnv’s built-in `dotenv` — do **not** add the npm `dotenv` package. In CI and production (e.g. Vercel), define the same names in the host’s environment settings.
+
 **Git:** When updating a feature branch from remote, prefer **`git pull --rebase`** (or `git fetch` + `git rebase origin/<branch>`) instead of a merge pull, unless you intentionally need a merge commit.
 
 

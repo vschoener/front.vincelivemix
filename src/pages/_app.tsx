@@ -1,6 +1,5 @@
 import App, { AppContext, AppInitialProps } from 'next/app';
 import { NextComponentType } from 'next';
-import React from 'react';
 import { Router } from 'next/router';
 
 import '../../public/style.css';

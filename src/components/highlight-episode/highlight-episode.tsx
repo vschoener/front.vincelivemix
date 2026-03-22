@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getHighLightEpisode } from '../../client/services/episode.service';
 import { HighLightEpisodeDto } from '../../server/dto/highlight-episode.dto';

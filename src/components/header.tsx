@@ -1,4 +1,4 @@
-import React from 'react';
+import { type FC } from 'react';
 import { useRouter } from 'next/router';
 
 import { useTranslation } from 'react-i18next';
@@ -12,7 +12,7 @@ type Props = {
   pageTitle?: string;
 };
 
-const Header: React.FC<Props> = ({ pageTitle }) => {
+const Header: FC<Props> = ({ pageTitle }) => {
   const { i18n } = useTranslation();
   const router = useRouter();
 
@@ -43,12 +43,9 @@ const Header: React.FC<Props> = ({ pageTitle }) => {
           <div className="classy-nav-container breakpoint-off light left">
             <nav className="classy-navbar justify-content-between" id="pocaNav">
               <S.LogoWrapper>
-                <Link href="/">
-                  <a className="nav-brand">
-                    <S.LogoImage src="/img/logo.jpg" />
-
-                    <S.LogoText>Vince Live Mix</S.LogoText>
-                  </a>
+                <Link href="/" className="nav-brand">
+                  <S.LogoImage src="/img/logo.jpg" />
+                  <S.LogoText>Vince Live Mix</S.LogoText>
                 </Link>
               </S.LogoWrapper>
               <div className="classy-navbar-toggler">
@@ -70,13 +67,13 @@ const Header: React.FC<Props> = ({ pageTitle }) => {
                         key={page.href}
                         className={page.href === router.pathname ? 'current-item' : ''}
                       >
-                        <Link href={page.href}>
-                          <a>{page.value}</a>
-                        </Link>
+                        <Link href={page.href}>{page.value}</Link>
                       </li>
                     ))}
-                    <li>
+                    {/* Match ClassyNav output (classynav.js) so SSR HTML matches the DOM before/after jQuery runs — avoids React 19 hydration errors. */}
+                    <li className="cn-dropdown-item has-down">
                       <LanguageHeader currentLang={currentLang} />
+                      <span className="dd-trigger" aria-hidden="true" />
                     </li>
                     {/*  <ul className="dropdown"> */}
                     {/*    <li><a href="/index.html">- Home</a></li> */}

@@ -1,12 +1,10 @@
-import React from 'react';
 import { useTranslation } from 'react-i18next';
-import getConfig from 'next/config';
+
+import { publicAppConfig } from '../../lib/public-config';
 import * as S from './subscribe-style';
 import { HighLightEpisode } from '../highlight-episode/highlight-episode';
 
-const { publicRuntimeConfig } = getConfig();
-
-const { host } = publicRuntimeConfig;
+const { host } = publicAppConfig;
 
 const Subscribe = () => {
   const { t } = useTranslation();

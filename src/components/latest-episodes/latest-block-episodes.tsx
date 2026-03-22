@@ -1,5 +1,4 @@
 import { useTranslation } from 'react-i18next';
-import React from 'react';
 import useSWR from 'swr';
 import * as S from './latest-block-episodes-style';
 import { EpisodesListDto } from '../../server/dto/episodes-list.dto';

@@ -1,13 +1,10 @@
 /* eslint-disable react/no-danger */
-import React from 'react';
-import getConfig from 'next/config';
 
 import { isProduction } from '../../lib/env';
+import { publicAppConfig } from '../../lib/public-config';
 
 const GoogleTag = () => {
-  const {
-    publicRuntimeConfig: { google },
-  } = getConfig();
+  const { google } = publicAppConfig;
 
   if (!isProduction()) {
     return null;

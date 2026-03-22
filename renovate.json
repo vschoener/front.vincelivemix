@@ -1,6 +1,8 @@
 {
   "labels": ["dependencies"],
   "assignees": ["vschoener"],
+  "prConcurrentLimit": 1,
+  "rebaseWhen": "behind-base-branch",
   "packageRules": [
     {
       "groupName": "Next-and-React",

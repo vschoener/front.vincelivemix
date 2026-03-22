@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useRef, useState } from 'react';
+import { type FunctionComponent, useCallback, useRef, useState } from 'react';
 import * as S from './audioplayer-style';
 import { InternalAudioPlayer } from './internal-audioplayer';
 
@@ -13,27 +13,30 @@ export const AudioPlayer: FunctionComponent<Props> = ({
   duration,
   durationInSeconds,
 }) => {
-  const audioRef = useRef<HTMLAudioElement>(null);
-  const [audioState, setAudioState] = useState<HTMLAudioElement | null>(audioRef.current);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [audioReady, setAudioReady] = useState(false);
 
-  useEffect(() => {
-    if (!audioRef.current) {
-      return;
-    }
-
-    setAudioState(audioRef.current);
-  }, [audioRef]);
+  const setAudioElementRef = useCallback((element: HTMLAudioElement | null) => {
+    audioRef.current = element;
+    setAudioReady(element !== null);
+  }, []);
 
   return (
     <>
-      <S.Audio ref={audioRef} preload="none" controls controlsList="nodownload" src={audioLink} />
-      {audioState && (
+      <S.Audio
+        ref={setAudioElementRef}
+        preload="none"
+        controls
+        controlsList="nodownload"
+        src={audioLink}
+      />
+      {audioReady ? (
         <InternalAudioPlayer
-          audio={audioState}
+          audioRef={audioRef}
           duration={duration}
           durationInSeconds={durationInSeconds}
         />
-      )}
+      ) : null}
     </>
   );
 };
