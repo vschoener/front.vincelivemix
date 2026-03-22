@@ -7,6 +7,8 @@ FROM node:24-bookworm AS builder
 WORKDIR /usr/src/app
 
 COPY package*.json ./
+# npm version comes from package.json "packageManager" (same as local / CircleCI).
+RUN corepack enable && corepack install
 COPY tsconfig*.json ./
 COPY . .
 # Next.js build can exceed default heap in CI; remote Docker has limited RAM.
@@ -25,7 +27,7 @@ WORKDIR /app
 ENV NODE_ENV=production
 
 COPY package*.json ./
-RUN npm ci --quiet --omit=dev
+RUN corepack enable && corepack install && npm ci --quiet --omit=dev
 
 ## We just need the .next folder to execute the command
 COPY --from=builder /usr/src/app/.next ./.next

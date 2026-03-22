@@ -1,5 +1,6 @@
 # Every branch / PR: lint + verify the Dockerfile builds (no registry push).
 # Node: canonical pin is .tool-versions (nodejs line); keep node/default tag in sync.
+# npm: canonical pin is package.json "packageManager"; test job upgrades the global CLI to match (cimg ships npm that Corepack does not override).
 #
 # docker-build uses the Docker executor + remote Docker (not `machine`) so it works on
 # plans where machine `ubuntu-2204` + resource_class combinations are rejected.
@@ -15,6 +16,13 @@ jobs:
       tag: '24.11.0'
     steps:
       - checkout
+      - run:
+          name: Align global npm with package.json packageManager
+          command: |
+            set -euo pipefail
+            NPM_VER=$(node -p "require('./package.json').packageManager.replace(/^npm@/,'')")
+            npm install -g "npm@${NPM_VER}"
+            npm --version
       - node/install-packages:
           cache-path: ~/project/node_modules
           override-ci-command: npm ci

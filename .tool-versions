@@ -1,1 +1,2 @@
+# npm: pinned in package.json "packageManager"; after `asdf install`, align npm (see AGENTS.md).
 nodejs 24.11.0
