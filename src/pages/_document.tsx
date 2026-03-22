@@ -1,4 +1,4 @@
-import React from 'react';
+import { type ReactElement } from 'react';
 import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 import GoogleTag from '../components/tags/google-tag';
@@ -29,7 +29,7 @@ export default class MyDocument extends Document {
     }
   }
 
-  render(): JSX.Element {
+  render(): ReactElement {
     return (
       <Html lang="en">
         <Head />

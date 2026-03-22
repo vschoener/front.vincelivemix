@@ -1,4 +1,4 @@
-import React from 'react';
+import { type FC } from 'react';
 import { useRouter } from 'next/router';
 
 import { useTranslation } from 'react-i18next';
@@ -12,7 +12,7 @@ type Props = {
   pageTitle?: string;
 };
 
-const Header: React.FC<Props> = ({ pageTitle }) => {
+const Header: FC<Props> = ({ pageTitle }) => {
   const { i18n } = useTranslation();
   const router = useRouter();
 

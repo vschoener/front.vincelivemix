@@ -1,23 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import { type MouseEvent, type RefObject, useEffect, useState } from 'react';
 import * as S from './audioplayer-style';
 import { PreloadState } from './preload-state.enum';
 
 type Props = {
-  audio: HTMLAudioElement;
+  audioRef: RefObject<HTMLAudioElement | null>;
   duration: string;
   durationInSeconds: number;
 };
 
-export const InternalAudioPlayer = ({ audio, duration, durationInSeconds }: Props) => {
+export const InternalAudioPlayer = ({ audioRef, duration, durationInSeconds }: Props) => {
   const [isPlaying, setPlayingState] = useState<boolean>(false);
   const [currentTime, setCurrentTime] = useState<number>(0);
-  const [currentPositionPercent, setCurrentPositionPercent] = useState<number>(0);
   const [currentSpeakerPositionPercent, setSpeakerPositionPercent] = useState<number>(100);
   const [oldCurrentSpeakerPositionPercent, setOldSpeakerPositionPercent] = useState<number>(100);
   const [isMuted, setSpeakerStatus] = useState<boolean>(false);
   const [isPreloadingSong, setPreloadingStatus] = useState<PreloadState>(PreloadState.NOT_STARTED);
 
   const play = async () => {
+    const audio = audioRef.current;
+    if (!audio) {
+      return;
+    }
+
     if (isPreloadingSong === PreloadState.NOT_STARTED) {
       setPreloadingStatus(PreloadState.PRELOADING);
     }
@@ -30,6 +34,10 @@ export const InternalAudioPlayer = ({ audio, duration, durationInSeconds }: Prop
   };
 
   const pause = async () => {
+    const audio = audioRef.current;
+    if (!audio) {
+      return;
+    }
     await audio.pause();
     setPlayingState(false);
   };
@@ -38,22 +46,26 @@ export const InternalAudioPlayer = ({ audio, duration, durationInSeconds }: Prop
 
   const changeState = async () => (isAudioPlaying() ? pause() : play());
 
-  const getDurationInPercent = () => (currentTime * 100) / durationInSeconds;
+  const currentPositionPercent = (currentTime * 100) / durationInSeconds;
 
-  const getPositionXFromTarget = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  const getPositionXFromTarget = (event: MouseEvent<HTMLDivElement>) => {
     const currentTargetRect = event.currentTarget.getBoundingClientRect();
     const offsetX = event.pageX - currentTargetRect.left;
 
     return (offsetX * 100) / currentTargetRect.width;
   };
 
-  const jumpToSongPosition = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  const jumpToSongPosition = (event: MouseEvent<HTMLDivElement>) => {
+    const audio = audioRef.current;
+    if (!audio) {
+      return;
+    }
     // Updating this instead of setCurrentTime allow to be catch by the original event listener
     // That calls this method. It also avoid a duplicate rerender issue kind of loop/lagging effect
     audio.currentTime = ((getPositionXFromTarget(event) * durationInSeconds) / 100) >> 0; // eslint-disable-line no-bitwise
   };
 
-  const jumpToVolumeSpeaker = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  const jumpToVolumeSpeaker = (event: MouseEvent<HTMLDivElement>) => {
     setSpeakerPositionPercent(getPositionXFromTarget(event) >> 0); // eslint-disable-line no-bitwise
   };
 
@@ -81,27 +93,41 @@ export const InternalAudioPlayer = ({ audio, duration, durationInSeconds }: Prop
     setSpeakerPositionPercent(oldCurrentSpeakerPositionPercent);
   };
 
-  audio.addEventListener('loadeddata', () => {
-    setPreloadingStatus(PreloadState.HAS_PRELOADED);
-    setPlayingState(true);
-  });
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) {
+      return undefined;
+    }
 
-  audio.addEventListener('timeupdate', () => {
-    setCurrentTime((audio.currentTime || 0) >> 0); // eslint-disable-line no-bitwise
-  });
+    const onLoadedData = () => {
+      setPreloadingStatus(PreloadState.HAS_PRELOADED);
+      setPlayingState(true);
+    };
+
+    const onTimeUpdate = () => {
+      setCurrentTime((audio.currentTime || 0) >> 0); // eslint-disable-line no-bitwise
+    };
+
+    audio.addEventListener('loadeddata', onLoadedData);
+    audio.addEventListener('timeupdate', onTimeUpdate);
+
+    return () => {
+      audio.removeEventListener('loadeddata', onLoadedData);
+      audio.removeEventListener('timeupdate', onTimeUpdate);
+    };
+  }, [audioRef]);
 
   useEffect(() => {
-    setCurrentPositionPercent(getDurationInPercent());
-  }, [currentTime]);
-
-  useEffect(() => {
+    const audio = audioRef.current;
     if (!audio) {
       return;
     }
 
     audio.volume = currentSpeakerPositionPercent / 100;
+    // Sync mute UI with slider; intentional effect (not derivable from percent alone due to toggleSpeaker).
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- volume slider and mute toggle share state
     setSpeakerStatus(!!currentSpeakerPositionPercent);
-  }, [currentSpeakerPositionPercent]);
+  }, [currentSpeakerPositionPercent, audioRef]);
 
   return (
     <S.AudioPlayer>

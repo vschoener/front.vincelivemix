@@ -1,4 +1,4 @@
-import React from 'react';
+import { type FC, type ReactNode } from 'react';
 
 import Header from '../header';
 import Footer from '../footer/footer';
@@ -6,10 +6,10 @@ import Footer from '../footer/footer';
 // Children was removed in React 18. We need to specify it ourselves
 // https://plainenglish.io/blog/how-to-use-react-fc-children-prop-in-react-18-with-typescript-6ab7b2c901ce
 type Props = {
-  children?: React.ReactNode
+  children?: ReactNode;
 };
 
-export const Layout: React.FC<Props> = ({ children }) => (
+export const Layout: FC<Props> = ({ children }) => (
   <>
     <Header />
 

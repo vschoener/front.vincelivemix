@@ -1,10 +1,9 @@
-import React from 'react';
+import { type FC } from 'react';
 import NextHead from 'next/head';
-import getConfig from 'next/config';
 
-const { publicRuntimeConfig } = getConfig();
+import { publicAppConfig } from '../lib/public-config';
 
-const { meta } = publicRuntimeConfig;
+const { meta } = publicAppConfig;
 
 const defaultDescription = meta.head.description;
 const defaultURL = meta.frontUrl;
@@ -16,7 +15,7 @@ type Props = {
   url?: string;
 };
 
-const Head: React.FC<Props> = ({ title = '', description = '', url = '' }) => (
+const Head: FC<Props> = ({ title = '', description = '', url = '' }) => (
   <NextHead>
     <meta charSet="UTF-8" />
     <meta lang="en" />

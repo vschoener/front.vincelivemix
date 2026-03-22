@@ -1,9 +1,7 @@
-import getConfig from 'next/config';
 import { isProduction } from './env';
+import { publicAppConfig } from './public-config';
 
-const { publicRuntimeConfig } = getConfig();
-
-const { google } = publicRuntimeConfig;
+const { google } = publicAppConfig;
 
 // https://developers.google.com/analytics/devguides/collection/gtagjs/pages
 //

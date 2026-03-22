@@ -16,9 +16,11 @@ const imageLoader = {
 };
 
 module.exports = {
-  // ESLint runs in CircleCI (`pnpm run lint`). Skipping during `next build` on Vercel avoids repeating the same rule noise in deploy logs.
-  eslint: {
-    ignoreDuringBuilds: true,
+  // Expose selected env vars to client bundles (replaces deprecated publicRuntimeConfig).
+  env: {
+    HOST: process.env.HOST || 'http://localhost:3000',
+    GOOGLE_TAG: process.env.GOOGLE_TAG || '',
+    LANG_DEBUG: process.env.LANG_DEBUG === 'true' ? 'true' : 'false',
   },
   webpack(config) {
 
@@ -26,31 +28,5 @@ module.exports = {
     config.module.rules.push(imageLoader);
 
     return config;
-  },
-  serverRuntimeConfig: {
-    backend: {
-      url: process.env.BACKEND_URL || 'http://localhost:3000',
-    }
-  },
-  publicRuntimeConfig: {
-    env: process.env.NODE_ENV || 'development',
-    host: process.env.HOST || 'http://localhost:3000',
-    meta: {
-      head: {
-        title: 'Vince live mix - Feel the vibe of the sound',
-        description: `
-          Passionate about the music, dj and mixing, you will find here a list of episodes mixing various styles
-          from House/Electro. EDM is my favorite one but you could find other style like dubstep, progressive and so on.
-        `,
-      },
-      frontUrl: 'www.vincelivemix.fr',
-      favicon: ''
-    },
-    google: {
-      tag: process.env.GOOGLE_TAG || '',
-    },
-    translate: {
-      debug: process.env.LANG_DEBUG === 'true' || false
-    }
   },
 };

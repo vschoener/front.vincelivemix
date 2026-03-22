@@ -1,4 +1,3 @@
-import React from 'react';
 import { Episode } from '../../../server/dto/episode.dto';
 import { EpisodeHeader } from '../episode-block/episode-header';
 import { AudioPlayer } from '../../audioplayer/audioplayer';
