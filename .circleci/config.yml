@@ -49,6 +49,8 @@ jobs:
           command: |
             set -euo pipefail
             PC_VER=$(awk '$1=="pre-commit"{print $2; exit}' .tool-versions)
+            # cimg/node ships python3 without pip; bootstrap pip for the current user only.
+            curl -sS https://bootstrap.pypa.io/get-pip.py | python3 - --user
             python3 -m pip install --user "pre-commit==${PC_VER}"
             echo "export PATH=\"${HOME}/.local/bin:\${PATH}\"" >> "${BASH_ENV}"
       - run:
