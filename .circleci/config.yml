@@ -49,10 +49,12 @@ jobs:
           command: |
             set -euo pipefail
             PC_VER=$(awk '$1=="pre-commit"{print $2; exit}' .tool-versions)
-            # cimg/node ships python3 without pip; bootstrap pip for the current user only.
-            curl -sS https://bootstrap.pypa.io/get-pip.py | python3 - --user
-            python3 -m pip install --user "pre-commit==${PC_VER}"
-            echo "export PATH=\"${HOME}/.local/bin:\${PATH}\"" >> "${BASH_ENV}"
+            # System Python on the image is PEP 668 "externally managed"; install into a venv (bundled pip).
+            VENV="${HOME}/.cache/pre-commit-ci-venv"
+            rm -rf "${VENV}"
+            python3 -m venv "${VENV}"
+            "${VENV}/bin/pip" install --disable-pip-version-check "pre-commit==${PC_VER}"
+            echo "export PATH=\"${VENV}/bin:\${PATH}\"" >> "${BASH_ENV}"
       - run:
           name: Pre-commit (all files)
           command: pre-commit run --all-files
