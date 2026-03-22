@@ -1,6 +1,6 @@
 /** Values previously from next/config publicRuntimeConfig; env-backed fields are inlined via next.config.js `env`. */
 export const publicAppConfig = {
-  host: process.env.HOST || 'http://localhost:3000',
+  host: process.env.HOST || 'http://localhost:3001',
   meta: {
     head: {
       title: 'Vince live mix - Feel the vibe of the sound',

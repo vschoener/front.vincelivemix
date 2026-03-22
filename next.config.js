@@ -15,10 +15,17 @@ const imageLoader = {
   },
 };
 
+/** Public site origin for HOST env (RSS links, SSR axios). Avoid defaulting to :3000 while `next dev` uses -p 3001 so API can stay on 3000. */
+function defaultPublicHost() {
+  if (process.env.HOST) return process.env.HOST;
+  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
+  return 'http://localhost:3001';
+}
+
 module.exports = {
   // Expose selected env vars to client bundles (replaces deprecated publicRuntimeConfig).
   env: {
-    HOST: process.env.HOST || 'http://localhost:3000',
+    HOST: defaultPublicHost(),
     GOOGLE_TAG: process.env.GOOGLE_TAG || '',
     LANG_DEBUG: process.env.LANG_DEBUG === 'true' ? 'true' : 'false',
   },

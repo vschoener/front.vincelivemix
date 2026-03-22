@@ -2,3 +2,8 @@
 /node_modules
 .pnpm-store
 *.tsbuildinfo
+
+# Local env (see .env.example; load with direnv via .envrc)
+.env
+.env.local
+.env.*.local
