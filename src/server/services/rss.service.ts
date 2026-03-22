@@ -4,7 +4,7 @@ export async function getRss(): Promise<string> {
   try {
     const { data } = await request.get('/api/rss');
     return data;
-  } catch (err) {
+  } catch {
     throw new DOMException('Error getting Rss');
   }
 }

@@ -6,15 +6,15 @@ FROM node:24-bookworm AS builder
 
 WORKDIR /usr/src/app
 
-COPY package*.json ./
-# npm version comes from package.json "packageManager" (same as local / CircleCI).
+COPY package.json pnpm-lock.yaml ./
+# pnpm version comes from package.json "packageManager" (same version as .tool-versions / asdf).
 RUN corepack enable && corepack install
 COPY tsconfig*.json ./
 COPY . .
 # Next.js build can exceed default heap in CI; remote Docker has limited RAM.
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV NODE_OPTIONS=--max-old-space-size=6144
-RUN npm ci --quiet && npm run build
+RUN pnpm install --frozen-lockfile && pnpm run build
 
 #
 # Production stage.
@@ -26,8 +26,8 @@ FROM node:24-bookworm-slim
 WORKDIR /app
 ENV NODE_ENV=production
 
-COPY package*.json ./
-RUN corepack enable && corepack install && npm ci --quiet --omit=dev
+COPY package.json pnpm-lock.yaml ./
+RUN corepack enable && corepack install && pnpm install --frozen-lockfile --prod
 
 ## We just need the .next folder to execute the command
 COPY --from=builder /usr/src/app/.next ./.next
