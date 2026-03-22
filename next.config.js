@@ -16,6 +16,10 @@ const imageLoader = {
 };
 
 module.exports = {
+  // ESLint runs in CircleCI (`npm run lint`). Skipping during `next build` on Vercel avoids repeating the same rule noise in deploy logs.
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   webpack(config) {
 
     config.module.rules.push(svgLoader);

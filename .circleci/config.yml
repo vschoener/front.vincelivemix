@@ -9,7 +9,7 @@ jobs:
   test:
     executor:
       name: node/default
-      tag: '18.16.0'
+      tag: '24.11.0'
     resource_class: small
     steps:
       - checkout
