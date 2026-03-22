@@ -7,6 +7,7 @@ This document contains guideline for AI agents to maintain this project
 - TypeSript
 
 ## Tools
+- [asdf](https://asdf-vm.com/) — Node version from `.tool-versions` (see `.node-version` for the same pin)
 - Renovate
 - Docker
 - Circle CI

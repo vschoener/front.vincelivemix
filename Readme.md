@@ -6,7 +6,8 @@ Here is the front of this website using nextjs framework.
 
 ## Requirement
 
-- Nodenv to set properly node version you need. A docker compose is plan.
+- **[asdf](https://asdf-vm.com/)** with the [Node.js plugin](https://github.com/asdf-vm/asdf-nodejs) to match the version in [`.tool-versions`](.tool-versions). Run `asdf install` from the repo root after cloning. The [`.node-version`](.node-version) file mirrors the same version for editors and other tools that read it.
+- A docker compose setup is planned.
 
 ## Installation
 
