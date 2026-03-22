@@ -1,5 +1,9 @@
-# PRs: lint only (fast). master: lint + Docker build/push.
+# Every branch / PR: lint and Docker build run in parallel (no registry push).
 # Node: canonical pin is .tool-versions (nodejs line); keep node/default tag in sync.
+# npm: canonical pin is package.json "packageManager"; test job upgrades the global CLI to match (cimg ships npm that Corepack does not override).
+#
+# docker-build uses the Docker executor + remote Docker (not `machine`) so it works on
+# plans where machine `ubuntu-2204` + resource_class combinations are rejected.
 version: 2.1
 
 orbs:
@@ -10,9 +14,15 @@ jobs:
     executor:
       name: node/default
       tag: '24.11.0'
-    resource_class: small
     steps:
       - checkout
+      - run:
+          name: Align global npm with package.json packageManager
+          command: |
+            set -euo pipefail
+            NPM_VER=$(node -p "require('./package.json').packageManager.replace(/^npm@/,'')")
+            npm install -g "npm@${NPM_VER}"
+            npm --version
       - node/install-packages:
           cache-path: ~/project/node_modules
           override-ci-command: npm ci
@@ -20,30 +30,32 @@ jobs:
           name: Lint
           command: npm run lint
 
-  build-and-push:
-    machine:
-      image: ubuntu-2204:2022.04.2
-    environment:
-      IMAGE_NAME: sdevilcry/front.vincelivemix
+  docker-build:
+    docker:
+      - image: cimg/base:2026.03
     steps:
       - checkout
+      # If the job fails with Docker client/daemon API mismatch, set `version` to a supported
+      # remote Docker from https://circleci.com/docs/building-docker-images/#docker-version
+      - setup_remote_docker:
+          version: default
       - run:
-          name: Build and push Docker image
+          name: Build Docker image (CI verification only — no push)
+          no_output_timeout: 25m
           command: |
-            IMAGE_TAG="0.0.${CIRCLE_BUILD_NUM}"
-            docker build -t $IMAGE_NAME:latest -f Dockerfile .
-            echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_LOGIN" --password-stdin
-            docker tag "$IMAGE_NAME:latest" "$IMAGE_NAME:$IMAGE_TAG"
-            docker push "$IMAGE_NAME:latest"
-            docker push "$IMAGE_NAME:$IMAGE_TAG"
+            set -euo pipefail
+            docker version
+            # Plain progress so long `next build` steps don’t look hung; pin platform for consistent pulls.
+            DOCKER_BUILDKIT=1 docker build \
+              --progress=plain \
+              --platform linux/amd64 \
+              -t front-vincelivemix:ci \
+              -f Dockerfile .
+            echo "Docker image built successfully (not pushed)."
 
 workflows:
+  version: 2
   ci:
     jobs:
       - test
-      - build-and-push:
-          requires:
-            - test
-          filters:
-            branches:
-              only: master
+      - docker-build
