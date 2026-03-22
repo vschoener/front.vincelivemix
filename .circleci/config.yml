@@ -1,5 +1,8 @@
 # Every branch / PR: lint + verify the Dockerfile builds (no registry push).
 # Node: canonical pin is .tool-versions (nodejs line); keep node/default tag in sync.
+#
+# docker-build uses the Docker executor + remote Docker (not `machine`) so it works on
+# plans where machine `ubuntu-2204` + resource_class combinations are rejected.
 version: 2.1
 
 orbs:
@@ -20,10 +23,12 @@ jobs:
           command: npm run lint
 
   docker-build:
-    machine:
-      image: ubuntu-2204:2022.04.2
+    docker:
+      - image: cimg/base:2024.01
     steps:
       - checkout
+      - setup_remote_docker:
+          version: default
       - run:
           name: Build Docker image (CI verification only — no push)
           command: |
