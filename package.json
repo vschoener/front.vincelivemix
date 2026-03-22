@@ -10,10 +10,12 @@
     "dev": "next dev --webpack -p 3001",
     "build": "next build --webpack",
     "start": "next start",
+    "check": "pnpm run lint && pnpm run prettier",
     "lint": "tsc --noEmit && eslint 'src/**/*.{js,ts,tsx}' --quiet",
     "lint:fix": "pnpm run lint -- --fix",
     "prettier": "prettier -l '{src,test}/**/*.{ts,yml,yaml,json,md}'",
-    "prettier:write": "prettier --write '{src,test}/**/*.{ts,yml,yaml,json,md}'"
+    "prettier:write": "prettier --write '{src,test}/**/*.{ts,yml,yaml,json,md}'",
+    "prepare": "husky"
   },
   "dependencies": {
     "@svgr/webpack": "^8.0.0",
@@ -51,6 +53,7 @@
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-react": "^7.27.1",
     "eslint-plugin-react-hooks": "^7.0.0",
+    "husky": "^9.1.7",
     "minimist": "^1.2.5",
     "prettier": "^3.0.0",
     "typescript": "^5.0.0"
