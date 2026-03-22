@@ -1,5 +1,5 @@
 # PRs: lint only (fast). master: lint + Docker build/push.
-# Node version must stay aligned with .tool-versions / .node-version.
+# Node: canonical pin is .tool-versions (nodejs line); keep node/default tag in sync.
 version: 2.1
 
 orbs:

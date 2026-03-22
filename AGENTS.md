@@ -7,7 +7,7 @@ This document contains guideline for AI agents to maintain this project
 - TypeSript
 
 ## Tools
-- [asdf](https://asdf-vm.com/) — Node version from `.tool-versions` (see `.node-version` for the same pin)
+- [asdf](https://asdf-vm.com/) — **Node version is defined in [`.tool-versions`](.tool-versions)** (canonical). [`.node-version`](.node-version) mirrors it for tools that do not read asdf; when bumping Node, also update the `node/default` `tag` in [`.circleci/config.yml`](.circleci/config.yml) and `engines` in `package.json` if needed.
 - Renovate
 - Docker
 - Circle CI
