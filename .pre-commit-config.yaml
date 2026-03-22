@@ -1,0 +1,14 @@
+# Hooks delegate to package.json scripts (single source of truth).
+repos:
+  - repo: local
+    hooks:
+      - id: lint
+        name: lint
+        entry: pnpm run lint
+        language: system
+        pass_filenames: false
+      - id: prettier
+        name: prettier
+        entry: pnpm run prettier
+        language: system
+        pass_filenames: false

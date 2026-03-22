@@ -141,7 +141,7 @@ When using this skill, the final response should usually contain:
 - Keep the PR small and reviewable when possible.
 - Prefer clarity over exhaustive detail.
 - If the branch contains unrelated changes, say so instead of pretending the PR is clean.
-- Always run `pnpm lint` before pushing the change and update the PR
+- **Pre-commit** runs on each **`git commit`** when hooks are installed (`pre-commit install` per `AGENTS.md`). Do not push commits made with **`--no-verify`** unless the PR explicitly documents why. If hooks were not run (fresh clone, skipped install, or unusual commit path), run **`pre-commit run --all-files`** once so local checks match CI before pushing.
 
 
 ## Commit conventions
