@@ -78,6 +78,16 @@ Review whether the change includes appropriate validation:
 
 If something important is missing, state it explicitly.
 
+### 3.1 Lockfile (`package-lock.json`, npm)
+
+This repo uses **npm** with a committed lockfile. Before a PR is ready:
+
+- If **`package.json`** changed (dependencies, `engines`, scripts that affect install), run **`npm install`** so **`package-lock.json` is up to date** and commit both together.
+- **Do not** open a PR with a stale or missing lock relative to `package.json` — reviewers and CI expect a reproducible install (`npm ci`).
+- If **`package-lock.json` conflicts** with `base` (e.g. after merging `master`): merge or take the intended `package.json`, then run **`npm install`** again and commit the **regenerated** lockfile. Avoid resolving lockfile conflicts by hand-editing JSON; regenerate instead.
+
+When using this skill, the agent should call out a **missing or conflicting lockfile** before treating the PR as ready.
+
 ### 4. Summarize the change
 
 Produce a concise summary covering:
@@ -151,6 +161,15 @@ If the current commits do not follow this format:
 - identify the incorrect commits
 - propose corrected messages
 - do not rewrite history automatically unless explicitly requested
+
+## Git: updating a local branch
+
+When integrating changes from `origin` (e.g. before pushing or opening a PR):
+
+- Prefer **`git pull --rebase`** (or **`git fetch` + `git rebase origin/<branch>`**) so your commits stay **on top of** the latest remote history.
+- **Avoid `git pull` without `--rebase`** (merge commits) for routine updates — it adds noise and complicates review.
+
+If a rebase hits conflicts, resolve files, then `git rebase --continue`. If a rebase is not appropriate (rare), say so explicitly.
 
 ## Commit history strategy
 

@@ -60,7 +60,7 @@ API contract and migrations live in that repo; this frontend points to it via `B
 - **Next.js** (Pages Router), **React**, **TypeScript**
 - **styled-components** (alongside legacy Bootstrap/class-based markup noted in README)
 - **SWR**, **axios** for data fetching
-- **CI/CD**: CircleCI (lint + Docker image build/push on `master`)
+- **CI/CD**: CircleCI (lint + Docker image **build** on every branch; **no** registry push — production is Vercel)
 - Dependency updates: Renovate (per project conventions)
 
 ---

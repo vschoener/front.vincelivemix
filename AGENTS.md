@@ -13,7 +13,9 @@ This document contains guideline for AI agents to maintain this project
 - Circle CI
 
 ## Development
-Read the `package.json` and `scripts` attribute to get the commands
+Read the `package.json` and `scripts` attribute to get the commands.
+
+**Git:** When updating a feature branch from remote, prefer **`git pull --rebase`** (or `git fetch` + `git rebase origin/<branch>`) instead of a merge pull, unless you intentionally need a merge commit.
 
 
 ## Info
