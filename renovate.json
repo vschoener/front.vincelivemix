@@ -30,6 +30,13 @@
       "packagePatterns": ["jest"]
     },
     {
+      "description": "Git SHA in pnpm.overrides for eslint-plugin-react: no Renovate digest PRs (verify ESLint 10 compatibility before bumping)",
+      "matchPackageNames": ["eslint-plugin-react"],
+      "matchDepTypes": ["pnpm.overrides"],
+      "matchUpdateTypes": ["digest"],
+      "enabled": false
+    },
+    {
       "updateTypes": ["minor", "patch", "pin", "digest"],
       "automerge": true,
       "groupName": "minors-update",
