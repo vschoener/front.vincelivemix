@@ -54,8 +54,11 @@ const Footer = () => {
                   data-toggle="tooltip"
                   data-placement="top"
                   title="Facebook"
+                  aria-label="Facebook"
+                  rel="noopener noreferrer"
+                  target="_blank"
                 >
-                  <i className="fa fa-facebook" />
+                  <i className="fa fa-facebook" aria-hidden="true" />
                 </a>
                 <a
                   href="https://twitter.com/vincelivemix"
@@ -63,8 +66,11 @@ const Footer = () => {
                   data-toggle="tooltip"
                   data-placement="top"
                   title="Twitter"
+                  aria-label="Twitter"
+                  rel="noopener noreferrer"
+                  target="_blank"
                 >
-                  <i className="fa fa-twitter" />
+                  <i className="fa fa-twitter" aria-hidden="true" />
                 </a>
                 <a
                   href="https://www.instagram.com/vincent.schoener"
@@ -72,8 +78,11 @@ const Footer = () => {
                   data-toggle="tooltip"
                   data-placement="top"
                   title="Instagram"
+                  aria-label="Instagram"
+                  rel="noopener noreferrer"
+                  target="_blank"
                 >
-                  <i className="fa fa-instagram" />
+                  <i className="fa fa-instagram" aria-hidden="true" />
                 </a>
                 {/* <a href="#" className="youtube" data-toggle="tooltip" data-placement="top" title="YouTube"><i */}
                 {/*  className="fa fa-youtube-play"></i></a> */}
