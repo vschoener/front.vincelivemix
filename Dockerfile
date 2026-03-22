@@ -2,7 +2,7 @@
 # Builder stage.
 # This state compile our TypeScript to get the JavaScript code
 #
-FROM node:24-bookworm AS builder
+FROM node:25-bookworm AS builder
 
 WORKDIR /usr/src/app
 
@@ -21,7 +21,7 @@ RUN pnpm install --frozen-lockfile && pnpm run build
 # This state compile get back the JavaScript code from builder stage
 # It will also install the production package only
 #
-FROM node:24-bookworm-slim
+FROM node:25-bookworm-slim
 
 WORKDIR /app
 ENV NODE_ENV=production

@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@types/gtag.js": "0.0.20",
-    "@types/node": "^24.0.0",
+    "@types/node": "^25.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "@types/styled-components": "^5.1.17",
