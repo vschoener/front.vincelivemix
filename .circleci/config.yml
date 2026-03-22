@@ -27,13 +27,22 @@ jobs:
       - image: cimg/base:2026.03
     steps:
       - checkout
+      # If the job fails with Docker client/daemon API mismatch, set `version` to a supported
+      # remote Docker from https://circleci.com/docs/building-docker-images/#docker-version
       - setup_remote_docker:
           version: default
       - run:
           name: Build Docker image (CI verification only — no push)
+          no_output_timeout: 25m
           command: |
             set -euo pipefail
-            docker build -t front-vincelivemix:ci -f Dockerfile .
+            docker version
+            # Plain progress so long `next build` steps don’t look hung; pin platform for consistent pulls.
+            DOCKER_BUILDKIT=1 docker build \
+              --progress=plain \
+              --platform linux/amd64 \
+              -t front-vincelivemix:ci \
+              -f Dockerfile .
             echo "Docker image built successfully (not pushed)."
 
 workflows:
