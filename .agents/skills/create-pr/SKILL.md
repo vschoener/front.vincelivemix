@@ -141,6 +141,7 @@ When using this skill, the final response should usually contain:
 - Keep the PR small and reviewable when possible.
 - Prefer clarity over exhaustive detail.
 - If the branch contains unrelated changes, say so instead of pretending the PR is clean.
+- Always run `pnpm lint` before pushing the change and update the PR
 
 
 ## Commit conventions
