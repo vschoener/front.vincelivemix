@@ -76,6 +76,7 @@ The project was originally shipped quickly with a **legacy HTML/CSS/JS** base; i
 ## Environment & configuration (for context)
 
 - **Backend**: `BACKEND_URL` — local default in `next.config.js` is `http://localhost:3000`; in production, point to **`https://backend.vincelivemix.fr`** (or your deployment’s URL).
+- **Vercel**: `package.json` pins Node with `engines.node` (**`24.x`**, aligned with `.tool-versions`). In the Vercel project, set **Settings → General → Node.js Version** to **24.x** (supported options are typically **20.x**, **22.x**, **24.x**) so the dashboard matches the repo. See [Node.js on Vercel](https://vercel.com/docs/functions/runtimes/node-js/node-js-versions). Production env vars (`BACKEND_URL`, `GOOGLE_TAG`, etc.) belong in **Settings → Environment Variables**.
 - **Public site metadata**: title/description and front URL are centralized in `next.config.js` `publicRuntimeConfig`.
 - **Analytics**: `GOOGLE_TAG` when applicable.
 
