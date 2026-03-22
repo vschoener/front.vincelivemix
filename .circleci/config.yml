@@ -1,4 +1,4 @@
-# Every branch / PR: lint + verify the Dockerfile builds (no registry push).
+# Every branch / PR: lint and Docker build run in parallel (no registry push).
 # Node: canonical pin is .tool-versions (nodejs line); keep node/default tag in sync.
 # npm: canonical pin is package.json "packageManager"; test job upgrades the global CLI to match (cimg ships npm that Corepack does not override).
 #
@@ -58,6 +58,4 @@ workflows:
   ci:
     jobs:
       - test
-      - docker-build:
-          requires:
-            - test
+      - docker-build
