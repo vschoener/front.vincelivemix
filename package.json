@@ -28,6 +28,11 @@
     "swr": "^2.0.0",
     "url-loader": "^4.1.1"
   },
+  "pnpm": {
+    "overrides": {
+      "eslint-plugin-react": "github:ledsun/eslint-plugin-react#2648f5b71716400ea00736dc7312e68c1c1408dc"
+    }
+  },
   "devDependencies": {
     "@types/gtag.js": "0.0.20",
     "@types/node": "^24.0.0",

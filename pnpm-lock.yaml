@@ -4,6 +4,9 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  eslint-plugin-react: github:ledsun/eslint-plugin-react#2648f5b71716400ea00736dc7312e68c1c1408dc
+
 importers:
 
   .:
@@ -88,8 +91,8 @@ importers:
         specifier: ^5.0.0
         version: 5.5.5(@types/eslint@9.6.1)(eslint-config-prettier@10.1.8(eslint@10.1.0))(eslint@10.1.0)(prettier@3.8.1)
       eslint-plugin-react:
-        specifier: ^7.27.1
-        version: 7.37.5(eslint@10.1.0)
+        specifier: github:ledsun/eslint-plugin-react#2648f5b71716400ea00736dc7312e68c1c1408dc
+        version: https://codeload.github.com/ledsun/eslint-plugin-react/tar.gz/2648f5b71716400ea00736dc7312e68c1c1408dc(eslint@10.1.0)
       eslint-plugin-react-hooks:
         specifier: ^7.0.0
         version: 7.0.1(eslint@10.1.0)
@@ -1814,8 +1817,9 @@ packages:
     peerDependencies:
       eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0 || ^9.0.0
 
-  eslint-plugin-react@7.37.5:
-    resolution: {integrity: sha512-Qteup0SqU15kdocexFNAJMvCJEfa2xUKNV4CC1xsVMrIIqEy3SQ/rqyxCWNzfrd3/ldy6HMlD2e0JDVpDg2qIA==}
+  eslint-plugin-react@https://codeload.github.com/ledsun/eslint-plugin-react/tar.gz/2648f5b71716400ea00736dc7312e68c1c1408dc:
+    resolution: {tarball: https://codeload.github.com/ledsun/eslint-plugin-react/tar.gz/2648f5b71716400ea00736dc7312e68c1c1408dc}
+    version: 7.37.5
     engines: {node: '>=4'}
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9.7
@@ -4806,7 +4810,7 @@ snapshots:
       eslint-import-resolver-typescript: 3.10.1(eslint-plugin-import@2.32.0)(eslint@10.1.0)
       eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.57.1(eslint@10.1.0)(typescript@5.9.3))(eslint-import-resolver-typescript@3.10.1)(eslint@10.1.0)
       eslint-plugin-jsx-a11y: 6.10.2(eslint@10.1.0)
-      eslint-plugin-react: 7.37.5(eslint@10.1.0)
+      eslint-plugin-react: https://codeload.github.com/ledsun/eslint-plugin-react/tar.gz/2648f5b71716400ea00736dc7312e68c1c1408dc(eslint@10.1.0)
       eslint-plugin-react-hooks: 7.0.1(eslint@10.1.0)
       globals: 16.4.0
       typescript-eslint: 8.57.1(eslint@10.1.0)(typescript@5.9.3)
@@ -4925,7 +4929,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-react@7.37.5(eslint@10.1.0):
+  eslint-plugin-react@https://codeload.github.com/ledsun/eslint-plugin-react/tar.gz/2648f5b71716400ea00736dc7312e68c1c1408dc(eslint@10.1.0):
     dependencies:
       array-includes: 3.1.9
       array.prototype.findlast: 1.2.5

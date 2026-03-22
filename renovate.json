@@ -9,6 +9,13 @@
   "rebaseWhen": "behind-base-branch",
   "packageRules": [
     {
+      "description": "ESLint major: manual review until jsx-eslint plugins publish ESLint 10 peers (see pnpm.overrides if using a git pin)",
+      "matchPackageNames": ["eslint"],
+      "matchUpdateTypes": ["major"],
+      "automerge": false,
+      "labels": ["eslint-major"]
+    },
+    {
       "groupName": "Next-and-React",
       "automerge": false,
       "labels": ["next-and-react"],
