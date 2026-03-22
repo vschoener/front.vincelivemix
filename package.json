@@ -30,7 +30,7 @@
   },
   "pnpm": {
     "overrides": {
-      "eslint-plugin-react": "github:ledsun/eslint-plugin-react#2648f5b71716400ea00736dc7312e68c1c1408dc"
+      "eslint-plugin-react": "github:ledsun/eslint-plugin-react#0adcdd0ba6050f903942cf374b3b4fa4a8e4db38"
     }
   },
   "devDependencies": {
