@@ -6,13 +6,13 @@ Here is the front of this website using nextjs framework.
 
 ## Requirement
 
-- **[asdf](https://asdf-vm.com/)** with the [Node.js plugin](https://github.com/asdf-vm/asdf-nodejs) to match the version in [`.tool-versions`](.tool-versions). Run `asdf install` from the repo root after cloning. The [`.node-version`](.node-version) file mirrors the same version for editors and other tools that read it.
+- **[asdf](https://asdf-vm.com/)** with the [Node.js plugin](https://github.com/asdf-vm/asdf-nodejs) and the [pnpm plugin](https://github.com/asdf-community/asdf-pnpm) to match [`.tool-versions`](.tool-versions). Run `asdf install` from the repo root after cloning. The [`.node-version`](.node-version) file mirrors the Node version for editors and other tools that read it.
 - A docker compose setup is planned.
 
 ## Installation
 
 ```bash
-npm install
+pnpm install
 ```
 
 ## Configuration
@@ -22,7 +22,7 @@ Take a look at the `next.config.js` to set environment variable
 ## Run
 
 ```bash
-npm run dev
+pnpm run dev
 ```
 
 ## Code improvement:

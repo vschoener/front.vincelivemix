@@ -78,13 +78,13 @@ Review whether the change includes appropriate validation:
 
 If something important is missing, state it explicitly.
 
-### 3.1 Lockfile (`package-lock.json`, npm)
+### 3.1 Lockfile (`pnpm-lock.yaml`, pnpm)
 
-This repo uses **npm** with a committed lockfile. Before a PR is ready:
+This repo uses **pnpm** with a committed lockfile. **pnpm** is pinned in [`.tool-versions`](../../../.tool-versions) (asdf); keep **`packageManager` in `package.json`** in sync when bumping the CLI. Before a PR is ready:
 
-- If **`package.json`** changed (dependencies, `engines`, scripts that affect install), run **`npm install`** so **`package-lock.json` is up to date** and commit both together.
-- **Do not** open a PR with a stale or missing lock relative to `package.json` — reviewers and CI expect a reproducible install (`npm ci`).
-- If **`package-lock.json` conflicts** with `base` (e.g. after merging `master`): merge or take the intended `package.json`, then run **`npm install`** again and commit the **regenerated** lockfile. Avoid resolving lockfile conflicts by hand-editing JSON; regenerate instead.
+- If **`package.json`** changed (dependencies, `engines`, scripts that affect install), run **`pnpm install`** so **`pnpm-lock.yaml` is up to date** and commit both together.
+- **Do not** open a PR with a stale or missing lock relative to `package.json` — reviewers and CI expect a reproducible install (`pnpm install --frozen-lockfile`).
+- If **`pnpm-lock.yaml` conflicts** with `base` (e.g. after merging `master`): merge or take the intended `package.json`, then run **`pnpm install`** again and commit the **regenerated** lockfile. Avoid resolving lockfile conflicts by hand-editing YAML; regenerate instead.
 
 When using this skill, the agent should call out a **missing or conflicting lockfile** before treating the PR as ready.
 

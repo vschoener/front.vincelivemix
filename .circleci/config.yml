@@ -1,6 +1,5 @@
 # Every branch / PR: lint and Docker build run in parallel (no registry push).
-# Node: canonical pin is .tool-versions (nodejs line); keep node/default tag in sync.
-# npm: canonical pin is package.json "packageManager"; test job upgrades the global CLI to match (cimg ships npm that Corepack does not override).
+# Node + pnpm: canonical pins are .tool-versions; keep node/default tag in sync; packageManager matches pnpm line for Corepack.
 #
 # docker-build uses the Docker executor + remote Docker (not `machine`) so it works on
 # plans where machine `ubuntu-2204` + resource_class combinations are rejected.
@@ -17,18 +16,15 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Align global npm with package.json packageManager
-          command: |
-            set -euo pipefail
-            NPM_VER=$(node -p "require('./package.json').packageManager.replace(/^npm@/,'')")
-            npm install -g "npm@${NPM_VER}"
-            npm --version
+          name: Enable Corepack (pnpm from packageManager, same as asdf .tool-versions)
+          command: corepack enable && corepack install
       - node/install-packages:
+          pkg-manager: pnpm
           cache-path: ~/project/node_modules
-          override-ci-command: npm ci
+          override-ci-command: pnpm install --frozen-lockfile
       - run:
           name: Lint
-          command: npm run lint
+          command: pnpm run lint
 
   docker-build:
     docker:

@@ -1,2 +1,3 @@
-# npm: pinned in package.json "packageManager"; after `asdf install`, align npm (see AGENTS.md).
+# pnpm: pinned here (asdf); keep package.json "packageManager" in sync (Corepack in Docker/CI).
 nodejs 24.11.0
+pnpm 10.32.1
