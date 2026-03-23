@@ -1,3 +1,4 @@
+/// <reference types="gtag.js" />
 import { isProduction } from './env';
 import { publicAppConfig } from './public-config';
 
@@ -10,7 +11,7 @@ export const pageview = (url: string) => {
     return;
   }
 
-  window.gtag('config', google.tag, {
+  gtag('config', google.tag, {
     page_path: url,
   });
 };
@@ -28,7 +29,7 @@ export const event = ({ action, category, label, value }: Event) => {
     return;
   }
 
-  window.gtag('event', action, {
+  gtag('event', action, {
     event_category: category,
     event_label: label,
     value,
