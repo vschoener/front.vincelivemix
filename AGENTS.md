@@ -26,7 +26,9 @@ When introducing or recommending a new development tool (e.g. `pre-commit`, `tas
 ## Development
 
 Before starting to work on a new branch, think about pulling the default branch to have up to date code.
-Read the `package.json` and `scripts` attribute to get the commands.
+Read the `package.json` and `scripts` attribute for available commands.
+
+**Lint and format:** **[Husky](https://typicode.github.io/husky/)** runs **`pnpm run check`** (lint + Prettier check) on every **`git commit`** after **`pnpm install`** (see [`.husky/pre-commit`](.husky/pre-commit)). CI runs the same via **`pnpm run check`**. For a manual run: **`pnpm run check`**, or **`pnpm run lint`** / **`pnpm run prettier`** separately. **`HUSKY=0`** is set in CircleCI and in the **Dockerfile** build so installs there do not try to wire Git hooks.
 
 **Environment variables:** Copy [`.env.example`](.env.example) to `.env`. With [direnv](https://direnv.net/) and [`.envrc`](.envrc), variables load when you enter the repo (run `direnv allow` once per clone). This uses direnv’s built-in `dotenv` — do **not** add the npm `dotenv` package. In CI and production (e.g. Vercel), define the same names in the host’s environment settings.
 

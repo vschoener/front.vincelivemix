@@ -13,6 +13,8 @@ jobs:
     executor:
       name: node/default
       tag: '24.11.0'
+    environment:
+      HUSKY: "0"
     steps:
       - checkout
       # pnpm on CircleCI: https://pnpm.io/continuous-integration#circleci
@@ -39,8 +41,8 @@ jobs:
           paths:
             - .pnpm-store
       - run:
-          name: Lint
-          command: pnpm run lint
+          name: Lint and format check
+          command: pnpm run check
 
   docker-build:
     docker:

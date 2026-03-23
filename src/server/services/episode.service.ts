@@ -3,7 +3,6 @@ import { HighLightEpisodeDto } from '../dto/highlight-episode.dto';
 import { request } from './backend';
 import { EpisodesListDto } from '../dto/episodes-list.dto';
 
-
 export async function getHighLightEpisode(): Promise<HighLightEpisodeDto | null> {
   try {
     const { data } = await request.get('/api/episodes/highlight-episode');

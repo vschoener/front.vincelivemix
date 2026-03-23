@@ -14,6 +14,8 @@ COPY . .
 # Next.js build can exceed default heap in CI; remote Docker has limited RAM.
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV NODE_OPTIONS=--max-old-space-size=6144
+# Skip Husky (Git hooks) during image install — no meaningful .git in build context.
+ENV HUSKY=0
 RUN pnpm install --frozen-lockfile && pnpm run build
 
 #
@@ -25,8 +27,11 @@ FROM node:24-bookworm-slim
 
 WORKDIR /app
 ENV NODE_ENV=production
+ENV HUSKY=0
 
 COPY package.json pnpm-lock.yaml ./
+# prepare runs `node .husky/install.mjs`; file must exist before pnpm install (script exits immediately when NODE_ENV=production).
+COPY .husky/install.mjs .husky/install.mjs
 RUN corepack enable && corepack install && pnpm install --frozen-lockfile --prod
 
 ## We just need the .next folder to execute the command
