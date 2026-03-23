@@ -131,13 +131,13 @@ export const InternalAudioPlayer = ({ audioRef, duration, durationInSeconds }: P
 
   return (
     <S.AudioPlayer>
-      <S.PlayPauseWrapper playing={isAudioPlaying()} onClick={changeState}>
-        <S.PlayPauseButton playing={isAudioPlaying()} preloadState={isPreloadingSong} />
+      <S.PlayPauseWrapper $playing={isAudioPlaying()} onClick={changeState}>
+        <S.PlayPauseButton $playing={isAudioPlaying()} $preloadState={isPreloadingSong} />
       </S.PlayPauseWrapper>
       <S.Time>{getCurrentTimeFormatted()}</S.Time>
       <S.Bar onClick={jumpToSongPosition}>
         <S.BarLoaded />
-        <S.BarPlayed percent={currentPositionPercent} />
+        <S.BarPlayed $percent={currentPositionPercent} />
       </S.Bar>
       <S.Duration>{duration}</S.Duration>
       <S.VolumeWrapper>
@@ -146,7 +146,7 @@ export const InternalAudioPlayer = ({ audioRef, duration, durationInSeconds }: P
         </S.VolumeButton>
         <S.VolumeBarWrapper onClick={jumpToVolumeSpeaker}>
           <S.VolumeBarInnerWrapper>
-            <S.Volume size={currentSpeakerPositionPercent} />
+            <S.Volume $size={currentSpeakerPositionPercent} />
           </S.VolumeBarInnerWrapper>
         </S.VolumeBarWrapper>
       </S.VolumeWrapper>

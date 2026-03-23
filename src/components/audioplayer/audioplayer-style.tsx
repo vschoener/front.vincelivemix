@@ -2,20 +2,20 @@ import styled, { css, keyframes } from 'styled-components';
 import { PreloadState } from './preload-state.enum';
 
 type PlayPauseWrapperProps = {
-  playing: boolean;
+  $playing: boolean;
 };
 
 type PlayPauseButtonProps = {
-  playing: boolean;
-  preloadState: PreloadState;
+  $playing: boolean;
+  $preloadState: PreloadState;
 };
 
 type VolumeProps = {
-  size: number;
+  $size: number;
 };
 
 type BarPlayedProps = {
-  percent: number;
+  $percent: number;
 };
 
 const rotateLoader = keyframes`
@@ -47,7 +47,7 @@ export const PlayPauseWrapper = styled.div<PlayPauseWrapperProps>`
   width: 35px;
   height: 35px;
   transition: all 0 ease-in-out;
-  background-color: ${({ playing }) => (playing ? 'transparent' : '#f55656')};
+  background-color: ${({ $playing }) => ($playing ? 'transparent' : '#f55656')};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -56,7 +56,7 @@ export const PlayPauseWrapper = styled.div<PlayPauseWrapperProps>`
   transition: all 0.2s ease-in-out;
 
   &:hover {
-    background: ${({ playing }) => (playing ? 'rgba(235,79,26,.1)' : '#f55656')};
+    background: ${({ $playing }) => ($playing ? 'rgba(235,79,26,.1)' : '#f55656')};
   }
 `;
 
@@ -65,9 +65,9 @@ export const PlayPauseWrapper = styled.div<PlayPauseWrapperProps>`
  */
 export const PlayPauseButton = styled.a<PlayPauseButtonProps>`
   content: '';
-  ${({ playing, preloadState }) =>
-    !playing &&
-    [PreloadState.NOT_STARTED, PreloadState.HAS_PRELOADED].includes(preloadState) &&
+  ${({ $playing, $preloadState }) =>
+    !$playing &&
+    [PreloadState.NOT_STARTED, PreloadState.HAS_PRELOADED].includes($preloadState) &&
     css`
       justify-content: center;
       width: 0;
@@ -79,8 +79,8 @@ export const PlayPauseButton = styled.a<PlayPauseButtonProps>`
       border-left: 12px solid #ffffff;
     `}
 
-   ${({ preloadState }) =>
-     preloadState === PreloadState.PRELOADING &&
+   ${({ $preloadState }) =>
+     $preloadState === PreloadState.PRELOADING &&
      css`
        justify-content: center;
        width: 0;
@@ -93,8 +93,8 @@ export const PlayPauseButton = styled.a<PlayPauseButtonProps>`
        animation: ${rotateLoader} 1.3s infinite;
      `}
 
-  ${({ playing }) =>
-    playing &&
+  ${({ $playing }) =>
+    $playing &&
     css`
       display: flex;
       justify-content: space-between;
@@ -172,7 +172,7 @@ export const BarPlayed = styled.div<BarPlayedProps>`
   -webkit-box-orient: horizontal;
   flex-direction: row-reverse;
   z-index: 2;
-  width: ${({ percent }) => `${percent}%`};
+  width: ${({ $percent }) => `${$percent}%`};
 `;
 
 export const VolumeWrapper = styled.div`
@@ -248,5 +248,5 @@ export const Volume = styled.div<VolumeProps>`
   position: absolute;
   top: 0;
   left: 0;
-  width: ${({ size }) => `${size}%`};
+  width: ${({ $size }) => `${$size}%`};
 `;
