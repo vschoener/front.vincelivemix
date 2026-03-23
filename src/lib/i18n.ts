@@ -12,6 +12,7 @@ i18next
   .init({
     lng: 'en',
     debug: publicAppConfig.translate.debug,
+    showSupportNotice: false,
     fallbackLng: 'en',
     preload: ['en', 'fr'],
     interpolation: {

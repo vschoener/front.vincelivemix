@@ -40,7 +40,8 @@ const Header: FC<Props> = ({ pageTitle }) => {
 
       <header className="header-area">
         <div className="main-header-area">
-          <div className="classy-nav-container breakpoint-off light left">
+          {/* classyNav.js mutates breakpoint-on/off from viewport before React hydrates */}
+          <div className="classy-nav-container breakpoint-off light left" suppressHydrationWarning>
             <nav className="classy-navbar justify-content-between" id="pocaNav">
               <S.LogoWrapper>
                 <Link href="/" className="nav-brand">

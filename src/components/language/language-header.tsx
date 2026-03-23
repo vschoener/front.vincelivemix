@@ -16,12 +16,12 @@ export const LanguageHeader = ({ currentLang }: LanguageHeaderProps) => {
   return (
     <>
       <S.Link>
-        <img src={`img/flags/${currentLang}.svg`} alt="Current flag" width={16} height={16} />
+        <img src={`/img/flags/${currentLang}.svg`} alt="Current flag" width={16} height={16} />
       </S.Link>
       <ul className="dropdown">
         <li>
           <S.Link onClick={changeLanguage('en')}>
-            <img src="img/flags/EN.svg" alt="French flag" width={16} height={16} /> EN
+            <img src="/img/flags/EN.svg" alt="English flag" width={16} height={16} /> EN
           </S.Link>
         </li>
         <li>
