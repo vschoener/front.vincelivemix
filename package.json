@@ -15,7 +15,7 @@
     "lint:fix": "pnpm run lint -- --fix",
     "prettier": "prettier -l '{src,test}/**/*.{ts,yml,yaml,json,md}'",
     "prettier:write": "prettier --write '{src,test}/**/*.{ts,yml,yaml,json,md}'",
-    "prepare": "husky"
+    "prepare": "node .husky/install.mjs"
   },
   "dependencies": {
     "@svgr/webpack": "^8.0.0",
