@@ -46,7 +46,7 @@ jobs:
 
   docker-build:
     docker:
-      - image: cimg/base:2026.03
+      - image: cimg/base:2026.09
     steps:
       - checkout
       # If the job fails with Docker client/daemon API mismatch, set `version` to a supported
